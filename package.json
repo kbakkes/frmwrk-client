@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@material-ui/core": "^3.9.3",
     "@reach/router": "^1.2.1",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
@@ -15,7 +16,6 @@
     "build": "react-scripts build && npm run tailwind:css",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
-
   },
   "eslintConfig": {
     "extends": "react-app"

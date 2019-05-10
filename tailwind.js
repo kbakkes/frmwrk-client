@@ -984,4 +984,4 @@ module.exports = {
     separator: ':',
   },
 
-}
+};

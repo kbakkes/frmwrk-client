@@ -1,11 +1,11 @@
 import React, { Component }  from 'react';
+import _ from 'underscore';
 import TextField from '@material-ui/core/TextField';
 import MenuItem from '@material-ui/core/MenuItem';
 import Slider from '@material-ui/lab/Slider';
 import { createMuiTheme, }  from '@material-ui/core/styles';
 import LensIcon from '@material-ui/icons/Lens';
-
-
+import Button from '@material-ui/core/Button';
 
 
 
@@ -15,6 +15,12 @@ const user = {
   emailadres: "karim@frmwrk.nl",
   functie: "Fullstack Drupal Developer",
   werkervaring: 2,
+    vaardigheden: [
+        'Magento',
+        'React',
+        'Vue.js',
+        'Projectmanagement',
+    ]
 };
 
 const themeIcon = createMuiTheme({
@@ -97,7 +103,8 @@ const styles = {
 
     },
     track: {
-        color: '#cc446f',
+        color: '#fbedff',
+        fontSize: '16px',
         backgroundColor: '#cc446f',
 
     }
@@ -121,6 +128,29 @@ class PersonalDataComponent extends Component {
     };
 
 
+    returnSkills(skills){
+        return _.map(skills,function (skill) {
+            return(
+                <div className="flex flex-wrap">
+                    <TextField style={styles.vaardigheden} id='Voornaam' InputProps={{disableUnderline: true}}  margin="dense" fullWidth={true} defaultValue={skill}/>
+                    <Slider
+                        classes={{ container: slider.slider, track: slider.sliderTrack }}
+                        style={styles.slider}
+                        theme={MuiSlider}
+                        value={skill}
+                        min={0}
+                        max={6}
+                        step={1}
+                        thumb={<LensIcon theme={themeIcon} />}
+                        selectionColor={styles.track}
+                        track={MuiSlider}
+                    />
+
+                </div>
+            )
+        })
+    }
+
 
     handleChange = (event, value) => {
         this.setState({ value });
@@ -128,7 +158,6 @@ class PersonalDataComponent extends Component {
 
     render() {
         const { value } = this.state;
-        const { classes } = this.props;
 
         return(
 
@@ -164,64 +193,19 @@ class PersonalDataComponent extends Component {
                 </div>
             </div>
             </div>
+
                 {/*Vaardigheden*/}
+                {this.returnSkills()}
                 <div className="Gegevens bg-yellow w-2/5 flex-1">
                     <h2 style={styles.title} className="pb-8 ml-16 font-frmwrk text-frmwrk-red mb-6 text-left">Vaardigheden</h2>
                     <div style={styles.divider} className="pl-16 pr-16 mt-8 border-r-2">
                         <div className='flex flex-col  w-full bg-grey-light text-left'>
                             <h3 style={styles.formTitle} className="flex-none  text-frmwrk-red w-2 mb-2 mt-4">Vaardigheid</h3>
-                        <div className="flex flex-wrap">
-                            <TextField style={styles.vaardigheden} id='Voornaam' InputProps={{disableUnderline: true}}  margin="dense" fullWidth={true} defaultValue="Magento"/>
-                            <Slider
-                                classes={{ container: slider.slider, track: slider.sliderTrack }}
-                                style={styles.slider}
-                                theme={MuiSlider}
-                                value={value}
-                                min={0}
-                                max={6}
-                                step={1}
-                                onChange={this.handleChange}
-                                thumb={<LensIcon theme={themeIcon} />}
-                                selectionColor={styles.track}
-                                track={MuiSlider}
-                            />
 
+
+                            { this.returnSkills(user.vaardigheden) }
                         </div>
-                            <div className="flex flex-wrap">
-                                <TextField style={styles.vaardigheden} id='Voornaam' InputProps={{disableUnderline: true}}  margin="dense" fullWidth={true} defaultValue="Magento"/>
-                                <Slider
-                                    classes={{ container: slider.slider, track: slider.sliderTrack }}
-                                    style={styles.slider}
-                                    theme={MuiSlider}
-                                    value={value}
-                                    min={0}
-                                    max={6}
-                                    step={1}
-                                    onChange={this.handleChange}
-                                    thumb={<LensIcon theme={themeIcon} />}
-                                    selectionColor={styles.track}
-                                    track={MuiSlider}
-                                />
-
-                            </div>
-                            <div className="flex flex-wrap">
-                                <TextField style={styles.vaardigheden} id='Voornaam' InputProps={{disableUnderline: true}}  margin="dense" fullWidth={true} defaultValue="Magento"/>
-                                <Slider
-                                    className="1"
-                                    classes={{ container: slider.slider, track: slider.sliderTrack }}
-                                    style={styles.slider}
-                                    theme={MuiSlider}
-                                    value={value}
-                                    min={0}
-                                    max={6}
-                                    step={1}
-                                    onChange={this.handleChange}
-                                    thumb={<LensIcon theme={themeIcon} />}
-                                    selectionColor={styles.track}
-                                    track={MuiSlider}
-                                />
-
-                            </div>                        </div>
+                        <Button  style={styles.track} color="secondary" variant="contained">+</Button>
                     </div>
                 </div>
 

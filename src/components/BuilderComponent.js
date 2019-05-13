@@ -7,7 +7,6 @@ class BuilderComponent extends Component {
             <div className="bg-frmwrk-blue h-full">
                 <div className="flex pl-10 pt-10">
                     <PersonalDataComponent />
-                    <PersonalDataComponent/>
                 </div>
             </div>
         );

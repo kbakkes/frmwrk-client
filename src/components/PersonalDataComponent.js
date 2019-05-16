@@ -9,30 +9,11 @@ import Button from '@material-ui/core/Button';
 
 
 
-const user = {
-  voornaam: "Karim",
-  achternaam: "Bakkes",
-  emailadres: "karim@frmwrk.nl",
-  functie: "Fullstack Drupal Developer",
-  werkervaring: 2,
-    vaardigheden: [
-        'Magento',
-        'React',
-        'Vue.js',
-        'Projectmanagement',
-    ]
-};
+
 
 const themeIcon = createMuiTheme({
     shadows: Array(25).fill('none')
 });
-
-const MuiSlider = createMuiTheme({
-    backgroundColor: '#cc446f',
-});
-
-
-
 
 const functies = [
         {
@@ -109,18 +90,6 @@ const styles = {
 
     }
 };
-const slider = {
-    root: {
-        width: 185,
-    },
-    slider: {
-        padding: '22px 0px',
-    },
-    sliderTrack: {
-        height: 5,
-    }
-};
-
 
 class PersonalDataComponent extends Component {
     state = {
@@ -128,36 +97,93 @@ class PersonalDataComponent extends Component {
     };
 
 
+    constructor(props){
+        super();
+        this.state = {
+            loadingFunctions: true,
+            isLoading: true,
+            sollicitatie: []
+        }
+    }
+
+
+
+    componentWillMount(){
+        console.log('test');
+        fetch('http://127.0.0.1:8000/api/sollicitaties/5cd2e2fb465b4abc67b4c77a', {
+            headers : {
+                'Content-Type': 'application/json',
+                'Accept': 'application/json',
+                'Token': 'Karim',
+            }
+        })
+            .then(res => res.json())
+            .then(sollicitatie => {
+                this.setState({
+                    isLoading: false,
+                    sollicitatie: sollicitatie[0]
+                });
+            });
+
+    }
+
+
+    returnFunctie(functieID){
+        fetch('http://127.0.0.1:8000/api/vacatures/' + functieID, {
+            headers : {
+                'Content-Type': 'application/json',
+                'Accept': 'application/json',
+            }
+        })
+            .then(res => res.json())
+            .then(functienaam => {
+                this.setState({
+                    loadingFunctions: false,
+                        functienaam: functienaam.functie
+                });
+            });
+
+        return this.state.sollicitatie.functienaam;
+    }
+
+
+
     returnSkills(skills){
         return _.map(skills,function (skill) {
             return(
                 <div className="flex flex-wrap">
-                    <TextField style={styles.vaardigheden} id='Voornaam' InputProps={{disableUnderline: true}}  margin="dense" fullWidth={true} defaultValue={skill}/>
+                    <TextField style={styles.vaardigheden} key={skill + 1} InputProps={{disableUnderline: true}}  margin="dense" fullWidth={true} defaultValue={skill}/>
                     <Slider
-                        classes={{ container: slider.slider, track: slider.sliderTrack }}
+                        key={skill}
                         style={styles.slider}
-                        theme={MuiSlider}
-                        value={skill}
+                        value={3}
                         min={0}
+                        label="Ervaring"
                         max={6}
                         step={1}
                         thumb={<LensIcon theme={themeIcon} />}
-                        selectionColor={styles.track}
-                        track={MuiSlider}
                     />
 
                 </div>
             )
         })
     }
-
-
     handleChange = (event, value) => {
         this.setState({ value });
     };
 
     render() {
+
+        if(this.state.isLoading === true){
+            return(<div>
+                Loading....
+            </div>)
+        } else {
+
+        }
         const { value } = this.state;
+
+        let user = this.state.sollicitatie;
 
         return(
 
@@ -180,7 +206,7 @@ class PersonalDataComponent extends Component {
                 <TextField style={styles.root} id='Emailadres' InputProps={{disableUnderline: true}} fullWidth={true} defaultValue={user.emailadres}/>
 
                 <h3 style={styles.formTitle} className="flex-none  text-frmwrk-red w-2 mb-2 mt-4">Functie</h3>
-                <TextField style={styles.root} id='functies' InputProps={{disableUnderline: true}} value={user.functie} fullWidth={true} select>
+                <TextField style={styles.root} id='functies' InputProps={{disableUnderline: true}} value={this.returnFunctie(this.state.sollicitatie.functie)} fullWidth={true} select>
                     {functies.map(option => (
                         <MenuItem key={option.value} value={option.value}>
                             {option.label}
@@ -193,9 +219,7 @@ class PersonalDataComponent extends Component {
                 </div>
             </div>
             </div>
-
                 {/*Vaardigheden*/}
-                {this.returnSkills()}
                 <div className="Gegevens bg-yellow w-2/5 flex-1">
                     <h2 style={styles.title} className="pb-8 ml-16 font-frmwrk text-frmwrk-red mb-6 text-left">Vaardigheden</h2>
                     <div style={styles.divider} className="pl-16 pr-16 mt-8 border-r-2">
@@ -203,7 +227,10 @@ class PersonalDataComponent extends Component {
                             <h3 style={styles.formTitle} className="flex-none  text-frmwrk-red w-2 mb-2 mt-4">Vaardigheid</h3>
 
 
-                            { this.returnSkills(user.vaardigheden) }
+
+                            {/*{ this.state.loadingFunctions ? <h2>Loading...</h2> : this.returnSkills(user.vaardigheden)}*/}
+
+                            {this.returnSkills(user.vaardigheden)}
                         </div>
                         <Button  style={styles.track} color="secondary" variant="contained">+</Button>
                     </div>

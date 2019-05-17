@@ -87,8 +87,11 @@ const styles = {
         backgroundColor: '#cc446f',
 
     },
-    trash: {
-
+    trash: {},
+    form:{
+        border: '1px solid #979797',
+        boxShadow: 'inset 0 1px 3px 0 rgba(0,0,0,0.50)',
+        borderRadius: '3px'
     }
 };
 
@@ -172,18 +175,20 @@ class PersonalDataComponent extends Component {
     returnSkills(skills){
         return skills.map((skill, idx) => {
             return(
-                <div key={idx+1}>
+                <div className="flex flex-wrap mt-8" key={idx+1}>
                     {/*<input type="text" value={skill.vaardigheid} onChange={this.handleNameChange(idx)} />*/}
                     <input
                         type="text"
                         placeholder={`Shareholder #${idx + 1} name`}
                         onChange={this.handleVaardighedenChange(idx)}
                         value={skill.vaardigheid}
+                        style={styles.form}
                     />
                     <Slider
-                        key={skill}
+                        key={idx+1}
                         style={styles.slider}
                         value={skill.ervaring}
+                        onChange={this.handleErvaringChange(idx)}
                         min={0}
                         label="Ervaring"
                         max={6}
@@ -195,13 +200,16 @@ class PersonalDataComponent extends Component {
         })
     }
 
+
+
+
     handleVaardighedenChange = idx => evt => {
         let oldSollicitatie = this.state.sollicitatie;
         const newShareholders = this.state.sollicitatie.vaardigheden.map((skill, sidx) => {
             if (idx !== sidx) return skill;
             return {
+                ervaring: skill.ervaring,
                 vaardigheid: evt.target.value,
-                    ervaring: skill.ervaring
             };
         });
 
@@ -210,9 +218,26 @@ class PersonalDataComponent extends Component {
         this.setState({ sollicitatie: oldSollicitatie });
     };
 
-    handleChange = (event, value) => {
-        this.setState({ value });
+
+
+    handleErvaringChange = idx => (evt,value) => {
+        let oldSollicitatie = this.state.sollicitatie;
+        const newShareholders = this.state.sollicitatie.vaardigheden.map((skill, sidx) => {
+            if (idx !== sidx) return skill;
+            return {
+                vaardigheid: skill.vaardigheid,
+                ervaring: value,
+            };
+        });
+
+        oldSollicitatie.vaardigheden = newShareholders;
+
+        this.setState({ sollicitatie: oldSollicitatie });
     };
+
+
+
+
 
     render() {
 
@@ -273,7 +298,6 @@ class PersonalDataComponent extends Component {
                         <Button onClick={this.addSkill} style={styles.track} color="secondary" variant="contained">+</Button>
                     </div>
                 </div>
-                <IncorporationForm/>
             </div>
         );
     }

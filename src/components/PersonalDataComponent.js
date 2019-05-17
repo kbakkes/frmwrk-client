@@ -1,13 +1,11 @@
 import React, { Component }  from 'react';
-import _ from 'underscore';
 import TextField from '@material-ui/core/TextField';
 import MenuItem from '@material-ui/core/MenuItem';
-import Slider from '@material-ui/lab/Slider';
-import { createMuiTheme, }  from '@material-ui/core/styles';
-import LensIcon from '@material-ui/icons/Lens';
 import Button from '@material-ui/core/Button';
-
-
+import Slider from '@material-ui/lab/Slider';
+import LensIcon from '@material-ui/icons/Lens';
+import {createMuiTheme} from "@material-ui/core/styles/index";
+import IncorporationForm from "./IncorporationForm";
 
 
 
@@ -75,7 +73,7 @@ const styles = {
     },
     slider: {
         padding: '22px 0px',
-        width: '185px',
+        width: '150px',
         marginLeft: '50px',
         color: '#cc446f',
         trackBefore: {
@@ -87,6 +85,9 @@ const styles = {
         color: '#fbedff',
         fontSize: '16px',
         backgroundColor: '#cc446f',
+
+    },
+    trash: {
 
     }
 };
@@ -101,9 +102,13 @@ class PersonalDataComponent extends Component {
         super();
         this.state = {
             loadingFunctions: true,
+            name: '',
             isLoading: true,
             sollicitatie: []
-        }
+        };
+
+
+        this.addSkill = this.addSkill.bind(this);
     }
 
 
@@ -121,7 +126,7 @@ class PersonalDataComponent extends Component {
             .then(sollicitatie => {
                 this.setState({
                     isLoading: false,
-                    sollicitatie: sollicitatie[0]
+                    sollicitatie: sollicitatie[0],
                 });
             });
 
@@ -141,33 +146,70 @@ class PersonalDataComponent extends Component {
                     loadingFunctions: false,
                         functienaam: functienaam.functie
                 });
+                return functienaam.functie;
             });
 
-        return this.state.sollicitatie.functienaam;
+    }
+
+
+
+    addSkill(){
+        let oldSollicitatie = this.state.sollicitatie;
+
+        oldSollicitatie.vaardigheden.push({
+            ervaring: 0,
+            vaardigheid: 'Vaardigheid'
+        });
+        console.log(oldSollicitatie);
+
+        this.setState({
+            sollicitatie: oldSollicitatie,
+        })
     }
 
 
 
     returnSkills(skills){
-        return _.map(skills,function (skill) {
+        return skills.map((skill, idx) => {
             return(
-                <div className="flex flex-wrap">
-                    <TextField style={styles.vaardigheden} key={skill + 1} InputProps={{disableUnderline: true}}  margin="dense" fullWidth={true} defaultValue={skill}/>
+                <div key={idx+1}>
+                    {/*<input type="text" value={skill.vaardigheid} onChange={this.handleNameChange(idx)} />*/}
+                    <input
+                        type="text"
+                        placeholder={`Shareholder #${idx + 1} name`}
+                        onChange={this.handleVaardighedenChange(idx)}
+                        value={skill.vaardigheid}
+                    />
                     <Slider
                         key={skill}
                         style={styles.slider}
-                        value={3}
+                        value={skill.ervaring}
                         min={0}
                         label="Ervaring"
                         max={6}
                         step={1}
                         thumb={<LensIcon theme={themeIcon} />}
                     />
-
                 </div>
             )
         })
     }
+
+    handleVaardighedenChange = idx => evt => {
+        let oldSollicitatie = this.state.sollicitatie;
+        const newShareholders = this.state.sollicitatie.vaardigheden.map((skill, sidx) => {
+            if (idx !== sidx) return skill;
+            return {
+                vaardigheid: evt.target.value,
+                    ervaring: skill.ervaring
+            };
+        });
+
+        oldSollicitatie.vaardigheden = newShareholders;
+
+        this.setState({ sollicitatie: oldSollicitatie });
+    };
+
     handleChange = (event, value) => {
         this.setState({ value });
     };
@@ -181,10 +223,8 @@ class PersonalDataComponent extends Component {
         } else {
 
         }
-        const { value } = this.state;
 
         let user = this.state.sollicitatie;
-
         return(
 
             <div className="flex bg-blue-light w-full">
@@ -206,7 +246,9 @@ class PersonalDataComponent extends Component {
                 <TextField style={styles.root} id='Emailadres' InputProps={{disableUnderline: true}} fullWidth={true} defaultValue={user.emailadres}/>
 
                 <h3 style={styles.formTitle} className="flex-none  text-frmwrk-red w-2 mb-2 mt-4">Functie</h3>
-                <TextField style={styles.root} id='functies' InputProps={{disableUnderline: true}} value={this.returnFunctie(this.state.sollicitatie.functie)} fullWidth={true} select>
+                {this.returnFunctie(this.state.sollicitatie.functie)}
+                <TextField style={styles.root}
+                           id='functies' InputProps={{disableUnderline: true}} value={this.state.functienaam} fullWidth={true} select>
                     {functies.map(option => (
                         <MenuItem key={option.value} value={option.value}>
                             {option.label}
@@ -226,16 +268,12 @@ class PersonalDataComponent extends Component {
                         <div className='flex flex-col  w-full bg-grey-light text-left'>
                             <h3 style={styles.formTitle} className="flex-none  text-frmwrk-red w-2 mb-2 mt-4">Vaardigheid</h3>
 
-
-
-                            {/*{ this.state.loadingFunctions ? <h2>Loading...</h2> : this.returnSkills(user.vaardigheden)}*/}
-
                             {this.returnSkills(user.vaardigheden)}
                         </div>
-                        <Button  style={styles.track} color="secondary" variant="contained">+</Button>
+                        <Button onClick={this.addSkill} style={styles.track} color="secondary" variant="contained">+</Button>
                     </div>
                 </div>
-
+                <IncorporationForm/>
             </div>
         );
     }

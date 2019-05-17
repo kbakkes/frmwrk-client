@@ -5,7 +5,6 @@ import Button from '@material-ui/core/Button';
 import Slider from '@material-ui/lab/Slider';
 import LensIcon from '@material-ui/icons/Lens';
 import {createMuiTheme} from "@material-ui/core/styles/index";
-import IncorporationForm from "./IncorporationForm";
 
 
 
@@ -13,16 +12,7 @@ const themeIcon = createMuiTheme({
     shadows: Array(25).fill('none')
 });
 
-const functies = [
-        {
-            value: 'Fullstack Magento Developer',
-            label: 'Fullstack Magento Developer',
-        },
-        {
-            value: 'Fullstack Drupal Developer',
-            label: 'Fullstack Drupal Developer',
-        }
-    ];
+
 
 const styles = {
     root: {
@@ -76,7 +66,7 @@ const styles = {
         width: '150px',
         marginLeft: '50px',
         color: '#cc446f',
-        trackBefore: {
+        track: {
             backgroundColor: '#cc446f',
         },
 
@@ -96,22 +86,20 @@ const styles = {
 };
 
 class PersonalDataComponent extends Component {
-    state = {
-        value: 3,
-    };
-
 
     constructor(props){
         super();
         this.state = {
             loadingFunctions: true,
-            name: '',
             isLoading: true,
+            functies: [],
             sollicitatie: []
         };
 
 
         this.addSkill = this.addSkill.bind(this);
+        this.handleFunctieChange = this.handleFunctieChange.bind(this);
+        this.returnFunctieDropdown = this.returnFunctieDropdown.bind(this);
     }
 
 
@@ -133,8 +121,28 @@ class PersonalDataComponent extends Component {
                 });
             });
 
+        this.getAllFuncties();
+
     }
 
+
+    getAllFuncties(){
+        fetch('http://127.0.0.1:8000/api/vacatures/', {
+            headers : {
+                'Content-Type': 'application/json',
+                'Accept': 'application/json',
+            }
+        })
+            .then(res => res.json())
+            .then(functies => {
+                console.log(functies);
+                console.log(this.state);
+                this.setState({
+                    functies: functies,
+                    loadingFunctions: false,
+                });
+            });
+    }
 
     returnFunctie(functieID){
         fetch('http://127.0.0.1:8000/api/vacatures/' + functieID, {
@@ -146,13 +154,13 @@ class PersonalDataComponent extends Component {
             .then(res => res.json())
             .then(functienaam => {
                 this.setState({
-                    loadingFunctions: false,
                         functienaam: functienaam.functie
                 });
                 return functienaam.functie;
             });
 
     }
+
 
 
 
@@ -164,19 +172,36 @@ class PersonalDataComponent extends Component {
             vaardigheid: 'Vaardigheid'
         });
         console.log(oldSollicitatie);
-
         this.setState({
             sollicitatie: oldSollicitatie,
         })
     }
 
 
+    returnFunctieDropdown(){
+        if(this.state.loadingFunctions && this.state.isLoading){
+            return(<h3>Loading...</h3>)
+        } else{
+            return(
+                <TextField onChange={this.handleFunctieChange} style={styles.root}
+                           id='functies' InputProps={{disableUnderline: true}} value={this.state.functienaam} fullWidth={true} select>
+                    {this.state.functies.map(functie => (
+                        <MenuItem key={functie.functie} value={functie.functie} id={functie._id}>
+                            {functie.functie}
+                        </MenuItem>
+                    ))}
+                </TextField>
+            )
+        }
+
+
+    }
+
 
     returnSkills(skills){
         return skills.map((skill, idx) => {
             return(
                 <div className="flex flex-wrap mt-8" key={idx+1}>
-                    {/*<input type="text" value={skill.vaardigheid} onChange={this.handleNameChange(idx)} />*/}
                     <input
                         type="text"
                         placeholder={`Shareholder #${idx + 1} name`}
@@ -236,7 +261,12 @@ class PersonalDataComponent extends Component {
     };
 
 
+    handleFunctieChange(event,value){
+        let oldSollicitatie = this.state.sollicitatie;
+        oldSollicitatie.functie = value.props.id;
 
+        this.setState({sollicitatie: oldSollicitatie})
+    }
 
 
     render() {
@@ -260,7 +290,6 @@ class PersonalDataComponent extends Component {
 
                 <div style={styles.divider} className="pl-16 pr-16 mt-10 border-r-2">
             <div className='flex-wrap  w-full text-left'>
-
                 <h3 style={styles.formTitle} className="flex-none  text-frmwrk-red w-2 mb-2 mt-4">Voornaam</h3>
                 <TextField style={styles.root} id='Voornaam' InputProps={{disableUnderline: true}}  fullWidth={true} defaultValue={user.voornaam}/>
 
@@ -272,14 +301,7 @@ class PersonalDataComponent extends Component {
 
                 <h3 style={styles.formTitle} className="flex-none  text-frmwrk-red w-2 mb-2 mt-4">Functie</h3>
                 {this.returnFunctie(this.state.sollicitatie.functie)}
-                <TextField style={styles.root}
-                           id='functies' InputProps={{disableUnderline: true}} value={this.state.functienaam} fullWidth={true} select>
-                    {functies.map(option => (
-                        <MenuItem key={option.value} value={option.value}>
-                            {option.label}
-                        </MenuItem>
-                    ))}
-                </TextField>
+                {this.returnFunctieDropdown()}
 
                 <h3 style={styles.formTitle} className="flex-none  text-frmwrk-red w-2 mb-2 mt-4">Werkervaring</h3>
                 <TextField  InputProps={{disableUnderline: true}}  fullWidth={true} style={styles.ervaring} id="ervaring" value={user.werkervaring} type="number" />
@@ -296,6 +318,7 @@ class PersonalDataComponent extends Component {
                             {this.returnSkills(user.vaardigheden)}
                         </div>
                         <Button onClick={this.addSkill} style={styles.track} color="secondary" variant="contained">+</Button>
+                        <Button onClick={this.logstate} style={styles.track} color="secondary" variant="contained">Call</Button>
                     </div>
                 </div>
             </div>

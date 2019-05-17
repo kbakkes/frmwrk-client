@@ -98,6 +98,7 @@ class PersonalDataComponent extends Component {
 
 
         this.addSkill = this.addSkill.bind(this);
+        this.handleFormChange = this.handleFormChange.bind(this);
         this.handleFunctieChange = this.handleFunctieChange.bind(this);
         this.returnFunctieDropdown = this.returnFunctieDropdown.bind(this);
     }
@@ -158,7 +159,6 @@ class PersonalDataComponent extends Component {
                 });
                 return functienaam.functie;
             });
-
     }
 
 
@@ -193,8 +193,6 @@ class PersonalDataComponent extends Component {
                 </TextField>
             )
         }
-
-
     }
 
 
@@ -269,6 +267,16 @@ class PersonalDataComponent extends Component {
     }
 
 
+    handleFormChange = name => event => {
+        let oldSollicitatie = this.state.sollicitatie;
+        oldSollicitatie[name] = event.target.value;
+        this.setState({
+                sollicitatie: oldSollicitatie
+            });
+    };
+
+
+
     render() {
 
         if(this.state.isLoading === true){
@@ -291,20 +299,20 @@ class PersonalDataComponent extends Component {
                 <div style={styles.divider} className="pl-16 pr-16 mt-10 border-r-2">
             <div className='flex-wrap  w-full text-left'>
                 <h3 style={styles.formTitle} className="flex-none  text-frmwrk-red w-2 mb-2 mt-4">Voornaam</h3>
-                <TextField style={styles.root} id='Voornaam' InputProps={{disableUnderline: true}}  fullWidth={true} defaultValue={user.voornaam}/>
+                <TextField style={styles.root} id='Voornaam' InputProps={{disableUnderline: true}}  fullWidth={true} onChange={this.handleFormChange('voornaam')} defaultValue={user.voornaam}/>
 
                 <h3 style={styles.formTitle} className="flex-none  text-frmwrk-red w-2 mb-2 mt-4">Achternaam</h3>
-                <TextField style={styles.root} id='Achternaam' InputProps={{disableUnderline: true}} fullWidth={true} defaultValue={user.achternaam} />
+                <TextField style={styles.root} id='Achternaam' InputProps={{disableUnderline: true}} fullWidth={true} onChange={this.handleFormChange('achternaam')} defaultValue={user.achternaam} />
 
                 <h3 style={styles.formTitle} className="flex-none  text-frmwrk-red w-2 mb-2 mt-4">Emailadres</h3>
-                <TextField style={styles.root} id='Emailadres' InputProps={{disableUnderline: true}} fullWidth={true} defaultValue={user.emailadres}/>
+                <TextField style={styles.root} id='Emailadres' InputProps={{disableUnderline: true}} fullWidth={true} onChange={this.handleFormChange('emailadres')} defaultValue={user.emailadres}/>
 
                 <h3 style={styles.formTitle} className="flex-none  text-frmwrk-red w-2 mb-2 mt-4">Functie</h3>
                 {this.returnFunctie(this.state.sollicitatie.functie)}
                 {this.returnFunctieDropdown()}
 
                 <h3 style={styles.formTitle} className="flex-none  text-frmwrk-red w-2 mb-2 mt-4">Werkervaring</h3>
-                <TextField  InputProps={{disableUnderline: true}}  fullWidth={true} style={styles.ervaring} id="ervaring" value={user.werkervaring} type="number" />
+                <TextField  InputProps={{disableUnderline: true}}  fullWidth={true} style={styles.ervaring} id="ervaring" onChange={this.handleFormChange('werkervaring')} value={user.werkervaring} type="number" />
                 </div>
             </div>
             </div>

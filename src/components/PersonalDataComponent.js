@@ -5,6 +5,8 @@ import Button from '@material-ui/core/Button';
 import Slider from '@material-ui/lab/Slider';
 import LensIcon from '@material-ui/icons/Lens';
 import {createMuiTheme} from "@material-ui/core/styles/index";
+import IconButton from '@material-ui/core/IconButton';
+import DeleteIcon from '@material-ui/icons/Delete';
 
 
 
@@ -71,13 +73,16 @@ const styles = {
         },
 
     },
-    track: {
+    add: {
         color: '#fbedff',
         fontSize: '16px',
         backgroundColor: '#cc446f',
+        marginTop: '10px'
 
     },
-    trash: {},
+    trash: {
+        marginLeft: '1px',
+    },
     form:{
         border: '1px solid #979797',
         boxShadow: 'inset 0 1px 3px 0 rgba(0,0,0,0.50)',
@@ -202,7 +207,7 @@ class PersonalDataComponent extends Component {
                 <div className="flex flex-wrap mt-8" key={idx+1}>
                     <input
                         type="text"
-                        placeholder={`Shareholder #${idx + 1} name`}
+                        placeholder={`Vaardigheid #${idx + 1}`}
                         onChange={this.handleVaardighedenChange(idx)}
                         value={skill.vaardigheid}
                         style={styles.form}
@@ -218,6 +223,9 @@ class PersonalDataComponent extends Component {
                         step={1}
                         thumb={<LensIcon theme={themeIcon} />}
                     />
+                    <IconButton onClick={this.handleVaardigheidDelete(idx)} style={styles.trash} aria-label="Delete">
+                        <DeleteIcon />
+                    </IconButton>
                 </div>
             )
         })
@@ -239,6 +247,21 @@ class PersonalDataComponent extends Component {
         oldSollicitatie.vaardigheden = newShareholders;
 
         this.setState({ sollicitatie: oldSollicitatie });
+    };
+
+
+    handleVaardigheidDelete = idx => evt => {
+      let oldSollicitatie = this.state.sollicitatie;
+
+      let newVaardigheden =  oldSollicitatie.vaardigheden.filter((s, sidx) => idx !== sidx);
+
+        console.log(newVaardigheden);
+
+        oldSollicitatie.vaardigheden = newVaardigheden;
+
+        this.setState({
+            sollicitatie: oldSollicitatie
+        })
     };
 
 
@@ -289,18 +312,18 @@ class PersonalDataComponent extends Component {
 
         let user = this.state.sollicitatie;
         return(
+            <div className="flex w-full">
 
-            <div className="flex bg-blue-light w-full">
 
-
-            <div className="flex-1 Gegevens w-2/5 bg-purple-light">
+            <div className="flex-1 bg-purple-light w-2/5">
                 <h2 style={styles.title} className="pb-8 ml-16 font-frmwrk text-frmwrk-red mb-10 text-left">Persoonlijke gegevens</h2>
 
-                <div style={styles.divider} className="pl-16 pr-16 mt-10 border-r-2">
-            <div className='flex-wrap  w-full text-left'>
+                <div style={styles.divider} className="pl-16 pr-16 mt-10 border-r-2 ">
+            <div className='flex flex-col  w-full text-left  bg-red-lightest justify-end'>
+                <div>
                 <h3 style={styles.formTitle} className="flex-none  text-frmwrk-red w-2 mb-2 mt-4">Voornaam</h3>
                 <TextField style={styles.root} id='Voornaam' InputProps={{disableUnderline: true}}  fullWidth={true} onChange={this.handleFormChange('voornaam')} defaultValue={user.voornaam}/>
-
+                </div>
                 <h3 style={styles.formTitle} className="flex-none  text-frmwrk-red w-2 mb-2 mt-4">Achternaam</h3>
                 <TextField style={styles.root} id='Achternaam' InputProps={{disableUnderline: true}} fullWidth={true} onChange={this.handleFormChange('achternaam')} defaultValue={user.achternaam} />
 
@@ -314,8 +337,9 @@ class PersonalDataComponent extends Component {
                 <h3 style={styles.formTitle} className="flex-none  text-frmwrk-red w-2 mb-2 mt-4">Werkervaring</h3>
                 <TextField  InputProps={{disableUnderline: true}}  fullWidth={true} style={styles.ervaring} id="ervaring" onChange={this.handleFormChange('werkervaring')} value={user.werkervaring} type="number" />
                 </div>
+                </div>
             </div>
-            </div>
+
                 {/*Vaardigheden*/}
                 <div className="Gegevens bg-yellow w-2/5 flex-1">
                     <h2 style={styles.title} className="pb-8 ml-16 font-frmwrk text-frmwrk-red mb-6 text-left">Vaardigheden</h2>
@@ -325,9 +349,9 @@ class PersonalDataComponent extends Component {
 
                             {this.returnSkills(user.vaardigheden)}
                         </div>
-                        <Button onClick={this.addSkill} style={styles.track} color="secondary" variant="contained">+</Button>
-                        <Button onClick={this.logstate} style={styles.track} color="secondary" variant="contained">Call</Button>
+                        <Button onClick={this.addSkill} style={styles.add} color="secondary" variant="contained">+</Button>
                     </div>
+
                 </div>
             </div>
         );

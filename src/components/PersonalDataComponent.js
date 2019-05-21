@@ -1,4 +1,5 @@
 import React, { Component }  from 'react';
+import './../css/builder.scss';
 import TextField from '@material-ui/core/TextField';
 import MenuItem from '@material-ui/core/MenuItem';
 import Button from '@material-ui/core/Button';
@@ -29,15 +30,14 @@ const styles = {
         width: '320px'
 
     },
-    formTitle: {
-        fontSize: '18px',
-        color: '#cc446f',
-        fontFamily: 'Ubuntu',
-        className: 'flex-1'
-    },
     title: {
         fontSize: '30px',
         fontWeight: 'bold',
+    },
+    titleGegevens: {
+        fontSize: '30px',
+        fontWeight: 'bold',
+        marginLeft: '10rem',
     },
     ervaring: {
         background: '#FFFFFF',
@@ -71,7 +71,9 @@ const styles = {
         track: {
             backgroundColor: '#cc446f',
         },
-
+        divider:{
+            paddingLeft: '50px',
+        }
     },
     add: {
         color: '#fbedff',
@@ -87,7 +89,7 @@ const styles = {
         border: '1px solid #979797',
         boxShadow: 'inset 0 1px 3px 0 rgba(0,0,0,0.50)',
         borderRadius: '3px'
-    }
+    },
 };
 
 class PersonalDataComponent extends Component {
@@ -204,7 +206,7 @@ class PersonalDataComponent extends Component {
     returnSkills(skills){
         return skills.map((skill, idx) => {
             return(
-                <div className="flex flex-wrap mt-8" key={idx+1}>
+                <div className="test" key={idx+1}>
                     <input
                         type="text"
                         placeholder={`Vaardigheid #${idx + 1}`}
@@ -312,48 +314,70 @@ class PersonalDataComponent extends Component {
 
         let user = this.state.sollicitatie;
         return(
-            <div className="flex w-full">
+            <div className="container">
 
-
-            <div className="flex-1 bg-purple-light w-2/5">
-                <h2 style={styles.title} className="pb-8 ml-16 font-frmwrk text-frmwrk-red mb-10 text-left">Persoonlijke gegevens</h2>
-
-                <div style={styles.divider} className="pl-16 pr-16 mt-10 border-r-2 ">
-            <div className='flex flex-col  w-full text-left  bg-red-lightest justify-end'>
-                <div>
-                <h3 style={styles.formTitle} className="flex-none  text-frmwrk-red w-2 mb-2 mt-4">Voornaam</h3>
-                <TextField style={styles.root} id='Voornaam' InputProps={{disableUnderline: true}}  fullWidth={true} onChange={this.handleFormChange('voornaam')} defaultValue={user.voornaam}/>
-                </div>
-                <h3 style={styles.formTitle} className="flex-none  text-frmwrk-red w-2 mb-2 mt-4">Achternaam</h3>
-                <TextField style={styles.root} id='Achternaam' InputProps={{disableUnderline: true}} fullWidth={true} onChange={this.handleFormChange('achternaam')} defaultValue={user.achternaam} />
-
-                <h3 style={styles.formTitle} className="flex-none  text-frmwrk-red w-2 mb-2 mt-4">Emailadres</h3>
-                <TextField style={styles.root} id='Emailadres' InputProps={{disableUnderline: true}} fullWidth={true} onChange={this.handleFormChange('emailadres')} defaultValue={user.emailadres}/>
-
-                <h3 style={styles.formTitle} className="flex-none  text-frmwrk-red w-2 mb-2 mt-4">Functie</h3>
-                {this.returnFunctie(this.state.sollicitatie.functie)}
-                {this.returnFunctieDropdown()}
-
-                <h3 style={styles.formTitle} className="flex-none  text-frmwrk-red w-2 mb-2 mt-4">Werkervaring</h3>
-                <TextField  InputProps={{disableUnderline: true}}  fullWidth={true} style={styles.ervaring} id="ervaring" onChange={this.handleFormChange('werkervaring')} value={user.werkervaring} type="number" />
-                </div>
-                </div>
-            </div>
-
-                {/*Vaardigheden*/}
-                <div className="Gegevens bg-yellow w-2/5 flex-1">
-                    <h2 style={styles.title} className="pb-8 ml-16 font-frmwrk text-frmwrk-red mb-6 text-left">Vaardigheden</h2>
-                    <div style={styles.divider} className="pl-16 pr-16 mt-8 border-r-2">
-                        <div className='flex flex-col  w-full bg-grey-light text-left'>
-                            <h3 style={styles.formTitle} className="flex-none  text-frmwrk-red w-2 mb-2 mt-4">Vaardigheid</h3>
-
-                            {this.returnSkills(user.vaardigheden)}
+                <div className="row">
+                    {/*border*/}
+                    <div className="col-md-5" style={{borderRight: '1px solid #ccc'}}>
+                    <h2>Persoonlijke gegevens</h2>
+                        <div className="form-group">
+                            <strong>Voornaam</strong>
+                            <TextField className="input" id='Voornaam' InputProps={{disableUnderline: true}} onChange={this.handleFormChange('voornaam')} defaultValue={user.voornaam}/>
                         </div>
-                        <Button onClick={this.addSkill} style={styles.add} color="secondary" variant="contained">+</Button>
+                        <div className="form-group">
+                            <strong>Achternaam</strong>
+                            <TextField className="input" id='Achternaaam' InputProps={{disableUnderline: true}} onChange={this.handleFormChange('achternaam')} defaultValue={user.achternaam}/>
+                        </div>
+                        <div className="form-group">
+                            <strong>Emailadres</strong>
+                            <TextField className="input" id='Emailadres' InputProps={{disableUnderline: true}} onChange={this.handleFormChange('emailadres')} defaultValue={user.emailadres}/>
+                        </div>
+                        <div className="form-group">
+                            <strong>Functie</strong>
+                            {this.returnFunctie(this.state.sollicitatie.functie)}
+                            {this.returnFunctieDropdown()}
+                        </div>
+                        <div className="form-group">
+                            <strong>Werkervaring</strong>
+                            <TextField className="input" id='Werkervaring' InputProps={{disableUnderline: true}} onChange={this.handleFormChange('werkervaring')} defaultValue={user.werkervaring}/>
+                        </div>
                     </div>
+                    <div className="col-md-7">
+                        <img src="//placehold.it/200x200" alt="" style={{borderRadius: '100%'}} />
+                            <div className="row">
+                                <div className="col-sm-6">
+                                    <div className="avatar-group">
+                                        Opties hier
+                                    </div>
+                                    <div className="avatar-group">
+                                        Opties hier
+                                    </div>
+                                    <div className="avatar-group">
+                                        Opties hier
+                                    </div>
 
+                                </div>
+                            </div>
+                        </div>
+                    <div className="row">
+                        <div className="col-md-5">
+                            <h1>Vaardigheid</h1>
+                        </div>
+                        <div className="col-md-7">
+                            <h1>ervaring</h1>
+                        </div>
+                    </div>
+                    {/*Vaardigheden*/}
+                    {/*<div className="flex-1 Gegevens bg-yellow-light w-2/5">*/}
+                        {/*<h2 style={styles.title} className="pb-8 ml-16 font-frmwrk text-frmwrk-red mb-6 text-left">Vaardigheden</h2>*/}
+                        {/*<div className='flex flex-col m-auto ml-16 mr-16 bg-grey-light' >*/}
+                            {/*<h3 style={styles.formTitle} className="flex-none text-frmwrk-red w-2 mb-2 mt-4">Vaardigheid</h3>*/}
+                            {/*{this.returnSkills(user.vaardigheden)}*/}
+                        {/*</div>*/}
+                        {/*<Button onClick={this.addSkill} style={styles.add} color="secondary" variant="contained">+</Button>*/}
+                    {/*</div>*/}
+                    </div>
                 </div>
-            </div>
         );
     }
 

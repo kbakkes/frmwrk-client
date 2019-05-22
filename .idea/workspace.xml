@@ -3,7 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="08aca765-f42e-48ff-8740-058306bbb988" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/src/components/PersonalDataComponent.js" afterPath="$PROJECT_DIR$/src/components/PersonalDataComponent.js" />
       <change beforePath="$PROJECT_DIR$/src/css/builder.scss" afterPath="$PROJECT_DIR$/src/css/builder.scss" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
@@ -60,24 +59,24 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="PersonalDataComponent.js" pinned="false" current-in-tab="true">
+      <file leaf-file-name="PersonalDataComponent.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/components/PersonalDataComponent.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="494">
+            <state relative-caret-position="470">
               <caret line="417" column="5" lean-forward="true" selection-start-line="417" selection-start-column="5" selection-end-line="417" selection-end-column="5" />
               <folding>
                 <element signature="e#0#42#0" expanded="true" />
-                <marker date="1558529912314" expanded="true" signature="4739:5053" ph="..." />
+                <marker date="1558530003607" expanded="true" signature="4739:5053" ph="..." />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="builder.scss" pinned="false" current-in-tab="false">
+      <file leaf-file-name="builder.scss" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/css/builder.scss">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="348">
-              <caret line="39" column="8" lean-forward="true" selection-start-line="39" selection-start-column="8" selection-end-line="39" selection-end-column="8" />
+            <state relative-caret-position="200">
+              <caret line="33" column="19" lean-forward="false" selection-start-line="33" selection-start-column="19" selection-end-line="33" selection-end-column="19" />
               <folding />
             </state>
           </provider>
@@ -161,8 +160,8 @@
         <option value="$PROJECT_DIR$/src/App.css" />
         <option value="$PROJECT_DIR$/src/css/grid.css" />
         <option value="$PROJECT_DIR$/src/App.js" />
-        <option value="$PROJECT_DIR$/src/css/builder.scss" />
         <option value="$PROJECT_DIR$/src/components/PersonalDataComponent.js" />
+        <option value="$PROJECT_DIR$/src/css/builder.scss" />
       </list>
     </option>
   </component>
@@ -264,12 +263,12 @@
       <workItem from="1558096103835" duration="8835000" />
       <workItem from="1558423733443" duration="3528000" />
       <workItem from="1558428553330" duration="13526000" />
-      <workItem from="1558510528453" duration="8510000" />
+      <workItem from="1558510528453" duration="8613000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="98065000" />
+    <option name="totallyTimeSpent" value="98168000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1280" height="800" extended-state="0" />
@@ -314,7 +313,7 @@
           <caret line="190" column="33" lean-forward="false" selection-start-line="190" selection-start-column="33" selection-end-line="190" selection-end-column="33" />
           <folding>
             <element signature="e#0#42#0" expanded="true" />
-            <marker date="1558529912314" expanded="true" signature="4739:5053" ph="..." />
+            <marker date="1558530003607" expanded="true" signature="4739:5053" ph="..." />
           </folding>
         </state>
       </provider>
@@ -342,7 +341,7 @@
           <caret line="1" column="0" lean-forward="false" selection-start-line="1" selection-start-column="0" selection-end-line="1" selection-end-column="0" />
           <folding>
             <element signature="e#0#42#0" expanded="true" />
-            <marker date="1558529912314" expanded="true" signature="4739:5053" ph="..." />
+            <marker date="1558530003607" expanded="true" signature="4739:5053" ph="..." />
           </folding>
         </state>
       </provider>
@@ -404,7 +403,7 @@
           <caret line="221" column="0" lean-forward="false" selection-start-line="221" selection-start-column="0" selection-end-line="221" selection-end-column="0" />
           <folding>
             <element signature="e#0#42#0" expanded="true" />
-            <marker date="1558529912314" expanded="true" signature="4739:5053" ph="..." />
+            <marker date="1558530003607" expanded="true" signature="4739:5053" ph="..." />
           </folding>
         </state>
       </provider>
@@ -440,7 +439,7 @@
           <caret line="11" column="113" lean-forward="false" selection-start-line="11" selection-start-column="113" selection-end-line="11" selection-end-column="113" />
           <folding>
             <element signature="e#0#42#0" expanded="true" />
-            <marker date="1558529912314" expanded="true" signature="4739:5053" ph="..." />
+            <marker date="1558530003607" expanded="true" signature="4739:5053" ph="..." />
           </folding>
         </state>
       </provider>
@@ -686,22 +685,22 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/css/builder.scss">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="348">
-          <caret line="39" column="8" lean-forward="true" selection-start-line="39" selection-start-column="8" selection-end-line="39" selection-end-column="8" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/components/PersonalDataComponent.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="494">
+        <state relative-caret-position="470">
           <caret line="417" column="5" lean-forward="true" selection-start-line="417" selection-start-column="5" selection-end-line="417" selection-end-column="5" />
           <folding>
             <element signature="e#0#42#0" expanded="true" />
-            <marker date="1558529912314" expanded="true" signature="4739:5053" ph="..." />
+            <marker date="1558530003607" expanded="true" signature="4739:5053" ph="..." />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/css/builder.scss">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="200">
+          <caret line="33" column="19" lean-forward="false" selection-start-line="33" selection-start-column="19" selection-end-line="33" selection-end-column="19" />
+          <folding />
         </state>
       </provider>
     </entry>

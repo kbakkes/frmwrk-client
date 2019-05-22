@@ -65,8 +65,6 @@ const styles = {
     },
     slider: {
         padding: '22px 0px',
-        width: '150px',
-        marginLeft: '50px',
         color: '#cc446f',
         track: {
             backgroundColor: '#cc446f',
@@ -80,7 +78,18 @@ const styles = {
         fontSize: '16px',
         backgroundColor: '#cc446f',
         marginTop: '10px'
-
+    },
+    send: {
+        color: '#fbedff',
+        fontSize: '16px',
+        backgroundColor: '#cc446f',
+        marginTop: '40px',
+        fontFamily: 'Ubuntu',
+        textTransform: 'capitalize',
+        paddingLeft: '35px',
+        paddingRight: '35px',
+        paddingTop: '5px',
+        paddingBottom: '5px',
     },
     trash: {
         marginLeft: '1px',
@@ -206,28 +215,34 @@ class PersonalDataComponent extends Component {
     returnSkills(skills){
         return skills.map((skill, idx) => {
             return(
-                <div className="test" key={idx+1}>
-                    <input
-                        type="text"
-                        placeholder={`Vaardigheid #${idx + 1}`}
-                        onChange={this.handleVaardighedenChange(idx)}
-                        value={skill.vaardigheid}
-                        style={styles.form}
-                    />
-                    <Slider
-                        key={idx+1}
-                        style={styles.slider}
-                        value={skill.ervaring}
-                        onChange={this.handleErvaringChange(idx)}
-                        min={0}
-                        label="Ervaring"
-                        max={6}
-                        step={1}
-                        thumb={<LensIcon theme={themeIcon} />}
-                    />
-                    <IconButton onClick={this.handleVaardigheidDelete(idx)} style={styles.trash} aria-label="Delete">
-                        <DeleteIcon />
-                    </IconButton>
+                <div className="row" key={idx+1}>
+                    <div className="col-md-5">
+                        <input
+                            type="text"
+                            placeholder={`Vaardigheid #${idx + 1}`}
+                            onChange={this.handleVaardighedenChange(idx)}
+                            value={skill.vaardigheid}
+                            className="skills-input"
+                        />
+                    </div>
+                    <div className="col-md-5">
+                        <Slider
+                            key={idx+1}
+                            style={styles.slider}
+                            value={skill.ervaring}
+                            onChange={this.handleErvaringChange(idx)}
+                            min={0}
+                            label="Ervaring"
+                            max={6}
+                            step={1}
+                            thumb={<LensIcon theme={themeIcon} />}
+                        />
+                    </div>
+                    <div className="col-md-1">
+                        <IconButton onClick={this.handleVaardigheidDelete(idx)} style={styles.trash} aria-label="Delete">
+                            <DeleteIcon />
+                        </IconButton>
+                    </div>
                 </div>
             )
         })
@@ -319,7 +334,7 @@ class PersonalDataComponent extends Component {
                 <div className="row">
                     {/*border*/}
                     <div className="col-md-5" style={{borderRight: '1px solid #ccc'}}>
-                    <h2>Persoonlijke gegevens</h2>
+                    <h2 className="skills-title">Persoonlijke gegevens</h2>
                         <div className="form-group">
                             <strong>Voornaam</strong>
                             <TextField className="input" id='Voornaam' InputProps={{disableUnderline: true}} onChange={this.handleFormChange('voornaam')} defaultValue={user.voornaam}/>
@@ -342,8 +357,8 @@ class PersonalDataComponent extends Component {
                             <TextField className="input" id='Werkervaring' InputProps={{disableUnderline: true}} onChange={this.handleFormChange('werkervaring')} defaultValue={user.werkervaring}/>
                         </div>
                     </div>
-                    <div className="col-md-7">
-                        <img src="//placehold.it/200x200" alt="" style={{borderRadius: '100%'}} />
+                    <div className="col-md-7" style={{paddingLeft: '35px'}} >
+                        <img src="//placehold.it/120x120" alt="" style={{borderRadius: '100%'}} />
                             <div className="row">
                                 <div className="col-sm-6">
                                     <div className="avatar-group">
@@ -355,29 +370,50 @@ class PersonalDataComponent extends Component {
                                     <div className="avatar-group">
                                         Opties hier
                                     </div>
-
+                                </div>
+                                <div className="col-sm-6">
+                                    <div className="avatar-group">
+                                        Opties hier
+                                    </div>
+                                    <div className="avatar-group">
+                                        Opties hier
+                                    </div>
+                                    <div className="avatar-group">
+                                        Opties hier
+                                    </div>
                                 </div>
                             </div>
+
+
+                            <div className="row">
+                                <div className="col-md-6">
+                                    <h2 className="skills-title">Vaardigheden</h2>
+                                </div>
+                            </div>
+                        <div className="row">
+                            <div className="col-md-5">
+                                <h3 className="skills-subtitle">Vaardigheid</h3>
+                            </div>
+                            <div className="col-md-5">
+                                <h3 className="skills-subtitle">Ervaring</h3>
+                            </div>
                         </div>
-                    <div className="row">
-                        <div className="col-md-5">
-                            <h1>Vaardigheid</h1>
+
+                        {this.returnSkills(user.vaardigheden)}
+
+                        <div className="row">
+                            <div className="col-md-5 " />
+                            <div className="col-md-2">
+                                <Button  onClick={this.addSkill} style={styles.add} color="secondary" variant="contained">+</Button>
+                            </div>
                         </div>
-                        <div className="col-md-7">
-                            <h1>ervaring</h1>
-                        </div>
-                    </div>
-                    {/*Vaardigheden*/}
-                    {/*<div className="flex-1 Gegevens bg-yellow-light w-2/5">*/}
-                        {/*<h2 style={styles.title} className="pb-8 ml-16 font-frmwrk text-frmwrk-red mb-6 text-left">Vaardigheden</h2>*/}
-                        {/*<div className='flex flex-col m-auto ml-16 mr-16 bg-grey-light' >*/}
-                            {/*<h3 style={styles.formTitle} className="flex-none text-frmwrk-red w-2 mb-2 mt-4">Vaardigheid</h3>*/}
-                            {/*{this.returnSkills(user.vaardigheden)}*/}
-                        {/*</div>*/}
-                        {/*<Button onClick={this.addSkill} style={styles.add} color="secondary" variant="contained">+</Button>*/}
-                    {/*</div>*/}
+
                     </div>
                 </div>
+                    <div className="flex justify-center">
+                        <Button  onClick={this.addSkill}  style={styles.send} color="secondary" variant="contained">Verzend Sollicitatie</Button>
+                    </div>
+            </div>
         );
     }
 

@@ -15,8 +15,6 @@ const themeIcon = createMuiTheme({
     shadows: Array(25).fill('none')
 });
 
-
-
 const styles = {
     root: {
         background: '#FFFFFF',
@@ -29,39 +27,6 @@ const styles = {
         paddingTop: '4px',
         width: '320px'
 
-    },
-    title: {
-        fontSize: '30px',
-        fontWeight: 'bold',
-    },
-    titleGegevens: {
-        fontSize: '30px',
-        fontWeight: 'bold',
-        marginLeft: '10rem',
-    },
-    ervaring: {
-        background: '#FFFFFF',
-        border: '1px solid #979797',
-        boxShadow: 'inset 0 1px 3px 0 rgba(0,0,0,0.50)',
-        borderRadius: '3px',
-        resize: 'none',
-        textAlign: 'left',
-        paddingLeft: '10px',
-        paddingTop: '4px',
-        width: '320px',
-        marginBottom: '30px'
-    },
-    vaardigheden: {
-        background: '#FFFFFF',
-        border: '1px solid #979797',
-        boxShadow: 'inset 0 1px 3px 0 rgba(0,0,0,0.50)',
-        borderRadius: '3px',
-        resize: 'none',
-        textAlign: 'left',
-        paddingLeft: '10px',
-        paddingTop: '4px',
-        width: '185px',
-        marginBottom: '30px'
     },
     slider: {
         padding: '22px 0px',

@@ -8,6 +8,7 @@ import LensIcon from '@material-ui/icons/Lens';
 import {createMuiTheme} from "@material-ui/core/styles/index";
 import IconButton from '@material-ui/core/IconButton';
 import DeleteIcon from '@material-ui/icons/Delete';
+import AvatarComponent from "./AvatarComponent";
 
 
 
@@ -284,102 +285,87 @@ class PersonalDataComponent extends Component {
 
     render() {
 
-        if(this.state.isLoading === true){
-            return(<div>
+        if (this.state.isLoading === true) {
+            return (<div>
                 Loading....
             </div>)
         } else {
 
-        }
 
-        let user = this.state.sollicitatie;
-        return(
-            <div className="container">
+            let user = this.state.sollicitatie;
+            return (
+                <div className="container">
 
-                <div className="row">
-                    {/*border*/}
-                    <div className="col-md-5" style={{borderRight: '1px solid #ccc'}}>
-                    <h2 className="skills-title">Persoonlijke gegevens</h2>
-                        <div className="form-group">
-                            <strong>Voornaam</strong>
-                            <TextField className="input" id='Voornaam' InputProps={{disableUnderline: true}} onChange={this.handleFormChange('voornaam')} defaultValue={user.voornaam}/>
-                        </div>
-                        <div className="form-group">
-                            <strong>Achternaam</strong>
-                            <TextField className="input" id='Achternaaam' InputProps={{disableUnderline: true}} onChange={this.handleFormChange('achternaam')} defaultValue={user.achternaam}/>
-                        </div>
-                        <div className="form-group">
-                            <strong>Emailadres</strong>
-                            <TextField className="input" id='Emailadres' InputProps={{disableUnderline: true}} onChange={this.handleFormChange('emailadres')} defaultValue={user.emailadres}/>
-                        </div>
-                        <div className="form-group">
-                            <strong>Functie</strong>
-                            {this.returnFunctie(this.state.sollicitatie.functie)}
-                            {this.returnFunctieDropdown()}
-                        </div>
-                        <div className="form-group">
-                            <strong>Werkervaring</strong>
-                            <TextField className="input" id='Werkervaring' InputProps={{disableUnderline: true}} onChange={this.handleFormChange('werkervaring')} defaultValue={user.werkervaring}/>
-                        </div>
-                    </div>
-                    <div className="col-md-7" style={{paddingLeft: '35px'}} >
-                        <img src="//placehold.it/120x120" alt="" style={{borderRadius: '100%'}} />
-                            <div className="row">
-                                <div className="col-sm-6">
-                                    <div className="avatar-group">
-                                        Opties hier
-                                    </div>
-                                    <div className="avatar-group">
-                                        Opties hier
-                                    </div>
-                                    <div className="avatar-group">
-                                        Opties hier
-                                    </div>
-                                </div>
-                                <div className="col-sm-6">
-                                    <div className="avatar-group">
-                                        Opties hier
-                                    </div>
-                                    <div className="avatar-group">
-                                        Opties hier
-                                    </div>
-                                    <div className="avatar-group">
-                                        Opties hier
-                                    </div>
-                                </div>
+                    <div className="row">
+                        {/*border*/}
+                        <div className="col-md-5" style={{borderRight: '1px solid #ccc'}}>
+                            <h2 className="skills-title">Persoonlijke gegevens</h2>
+                            <div className="form-group">
+                                <strong>Voornaam</strong>
+                                <TextField className="input" id='Voornaam' InputProps={{disableUnderline: true}}
+                                           onChange={this.handleFormChange('voornaam')} defaultValue={user.voornaam}/>
                             </div>
+                            <div className="form-group">
+                                <strong>Achternaam</strong>
+                                <TextField className="input" id='Achternaaam' InputProps={{disableUnderline: true}}
+                                           onChange={this.handleFormChange('achternaam')}
+                                           defaultValue={user.achternaam}/>
+                            </div>
+                            <div className="form-group">
+                                <strong>Emailadres</strong>
+                                <TextField className="input" id='Emailadres' InputProps={{disableUnderline: true}}
+                                           onChange={this.handleFormChange('emailadres')}
+                                           defaultValue={user.emailadres}/>
+                            </div>
+                            <div className="form-group">
+                                <strong>Functie</strong>
+                                {this.returnFunctie(this.state.sollicitatie.functie)}
+                                {this.returnFunctieDropdown()}
+                            </div>
+                            <div className="form-group">
+                                <strong>Werkervaring</strong>
+                                <TextField className="input" id='Werkervaring' InputProps={{disableUnderline: true}}
+                                           onChange={this.handleFormChange('werkervaring')}
+                                           defaultValue={user.werkervaring}/>
+                            </div>
+                        </div>
+                        <div className="col-md-7" style={{paddingLeft: '35px'}}>
 
+                            <AvatarComponent/>
 
                             <div className="row">
                                 <div className="col-md-6">
                                     <h2 className="skills-title">Vaardigheden</h2>
                                 </div>
                             </div>
-                        <div className="row">
-                            <div className="col-md-5">
-                                <h3 className="skills-subtitle">Vaardigheid</h3>
+                            <div className="row">
+                                <div className="col-md-5">
+                                    <h3 className="skills-subtitle">Vaardigheid</h3>
+                                </div>
+                                <div className="col-md-5">
+                                    <h3 className="skills-subtitle">Ervaring</h3>
+                                </div>
                             </div>
-                            <div className="col-md-5">
-                                <h3 className="skills-subtitle">Ervaring</h3>
+
+                            {this.returnSkills(user.vaardigheden)}
+
+                            <div className="row">
+                                <div className="col-md-5 "/>
+                                <div className="col-md-2">
+                                    <Button onClick={this.addSkill} style={styles.add} color="secondary"
+                                            variant="contained">+</Button>
+                                </div>
                             </div>
+
                         </div>
-
-                        {this.returnSkills(user.vaardigheden)}
-
-                        <div className="row">
-                            <div className="col-md-5 " />
-                            <div className="col-md-2">
-                                <Button  onClick={this.addSkill} style={styles.add} color="secondary" variant="contained">+</Button>
-                            </div>
-                        </div>
-
+                    </div>
+                    <div className="flex justify-center">
+                        <Button onClick={this.addSkill} style={styles.send} color="secondary" variant="contained">Verzend
+                            Sollicitatie</Button>
                     </div>
                 </div>
-                    <div className="flex justify-center">
-                        <Button  onClick={this.addSkill}  style={styles.send} color="secondary" variant="contained">Verzend Sollicitatie</Button>
-                    </div>
-            </div>
-        );
+            );
+        }
     }
 
 

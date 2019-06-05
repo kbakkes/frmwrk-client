@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="20px" height="24px" viewBox="0 0 20 24" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 46.2 (44496) - http://www.bohemiancoding.com/sketch -->
+    <title>face2</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Faces" transform="translate(-98.000000, -30.000000)" fill-rule="nonzero">
+            <g id="face2" transform="translate(98.000000, 30.000000)">
+                <g id="Group" fill="#0B2C48">
+                    <ellipse id="Oval" cx="2.90001225" cy="2.79999399" rx="2.20000005" ry="2.4000001"></ellipse>
+                    <ellipse id="Oval" cx="17.4999878" cy="2.7999939" rx="2.2" ry="2.4"></ellipse>
+                </g>
+                <path d="M4,18.5454545 C5.4,21.4909091 8,23.4545455 10.8,23.4545455 C13.7,23.4545455 16.2,21.4909091 17.6,18.5454545 L4,18.5454545 Z" id="Shape" fill="#FFFFFF"></path>
+            </g>
+        </g>
+    </g>
+</svg>

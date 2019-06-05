@@ -2,14 +2,51 @@ import React, { Component }  from 'react';
 
 
 
-
-const background = [
-        '#ff6200',
-        '#4dff3e',
-        '#ff3340',
-        '#db8aff',
+const avatarAssets ={
+    background:  [
+        '#6DB8DE',
+        '#E83837',
+        '#55A896',
+        '#E36A41',
         '#a9ffe7',
-    ];
+    ],
+    skin:
+        [
+            [
+                require('./../assets/avatar/head/skin1/head1.svg'),
+                require('./../assets/avatar/head/skin1/head2.svg'),
+                require('./../assets/avatar/head/skin1/head3.svg'),
+            ],
+            [
+                require('./../assets/avatar/head/skin2/head1.svg'),
+                require('./../assets/avatar/head/skin2/head2.svg'),
+                require('./../assets/avatar/head/skin2/head3.svg'),
+            ],
+            [
+                require('./../assets/avatar/head/skin3/head1.svg'),
+                require('./../assets/avatar/head/skin3/head2.svg'),
+                require('./../assets/avatar/head/skin3/head3.svg'),
+            ],
+        ],
+    face: [
+        require('./../assets/avatar/face/face1.svg'),
+        require('./../assets/avatar/face/face2.svg'),
+    ],
+    facial:[
+        [
+            require('./../assets/avatar/facialhair/color1/facial1.svg'),
+            require('./../assets/avatar/facialhair/color1/facial2.svg'),
+        ],
+        [
+            require('./../assets/avatar/facialhair/color2/facial1.svg'),
+            require('./../assets/avatar/facialhair/color2/facial2.svg'),
+        ]
+
+    ],
+
+
+};
+
 
 
 
@@ -20,13 +57,15 @@ class AvatarComponent extends Component {
         this.state = {
             isLoading: true,
             avatar: {
-                background: 0
+                background: 0,
+                head: 0,
+                skin: 0,
+                face: 0,
+                facial: 0,
             }
-
         };
 
-
-        this.returnFaces = this.returnFaces.bind(this);
+        this.returnAvatarEditors = this.returnAvatarEditors.bind(this);
         this.changeBackground = this.changeBackground.bind(this);
     }
 
@@ -37,39 +76,60 @@ class AvatarComponent extends Component {
         })
     }
 
-
-    logTest(){
-        console.log('test')
-    }
-
-    changeBackground = idx => evt => {
+    changeBackground = (dir,name) => evt => {
         let oldAvatar = this.state.avatar;
-        let arrayLength = (background.length -1);
+        let arrayLength;
 
-        console.log(idx);
-        if(oldAvatar.background === arrayLength){
-            oldAvatar.background = 0;
+
+        // voor skins extra scope
+        if(name[0] === 'head'){
+             arrayLength = (avatarAssets.skin[0].length -1);
+        }
+        else if(name[0] === 'facial'){
+            arrayLength = (avatarAssets.facial[0].length -1);
+        }
+        else{
+            console.log(avatarAssets[name]);
+             arrayLength = (avatarAssets[name].length -1);
+        }
+
+
+        if(oldAvatar[name] > arrayLength || oldAvatar[name] < 0){
+            oldAvatar[name] = 0;
         } else {
-            if(idx === 'left'){
-                oldAvatar.background-=1;
-            } else{
-                oldAvatar.background +=1
+            if(dir === 'left'){
+                // Als hij aan het begin is weer  naar einde
+                if(oldAvatar[name] === 0){
+                    oldAvatar[name] = arrayLength
+                } else {
+                    // naar links in de array
+                    oldAvatar[name]-=1;
+                }
 
+            } else{
+                // Als de array is afgelopen naar het begin
+                if(oldAvatar[name] >= arrayLength){
+                    oldAvatar[name] = 0;
+                } else{
+                    // naar rechts in de array
+                    oldAvatar[name] +=1
+                }
             }
         }
 
         this.setState({
             avatar: oldAvatar
         });
-        console.log(arrayLength);
-        console.log(this.state.avatar.background);
-
+        console.log(this.state.avatar);
     };
 
-    returnFaces = index =>  {
+
+
+
+    returnAvatarEditors = name =>  {
         return(
             <div>
-                <div className="col-md-1" onClick={this.changeBackground('left')}>
+                <div className="col-md-1" onClick={this.changeBackground('left', [name])}>
                     Links
                 </div>
 
@@ -77,7 +137,7 @@ class AvatarComponent extends Component {
                     test
                 </div>
 
-                <div className="col-md-1" onClick={this.changeBackground('right')}>
+                <div className="col-md-1" onClick={this.changeBackground('right',[name])}>
                 Rechts
                 </div>
             </div>
@@ -92,41 +152,72 @@ class AvatarComponent extends Component {
                 Loading....
             </div>)
         } else {
-
+            let avatar = this.state.avatar;
+            // console.log(avatarAssets.head[avatar.skin][avatar.head]);
             return (
                 <div className="row">
                     <div className="col-md-12 text-center" style={{backgroundColor: '#ffd3c7'}}>
                         {/*<img src="//placehold.it/120x120" alt="" style={{borderRadius: '100%'}} />*/}
                         <div style={{
-                            backgroundColor: background[this.state.avatar.background],
+                            backgroundColor: avatarAssets.background[avatar.background],
                             borderRadius: '100%',
                             height: '120px',
                             width: '120px'
-                        }}/>
-                    </div>
+                        }}>
+                            <img style={{borderRadius: '100%', marginTop: '14px',}}
+                                 alt="svg"
+                                 src={avatarAssets.skin[avatar.skin][avatar.head]} />
 
+                            <img style={{marginTop: '38px', marginLeft: '-63px', position: 'absolute' }}
+                                 alt="face"
+                                 src={avatarAssets.face[avatar.face]} />
+
+                            <img style={{marginTop: '31px', marginLeft: '-67px', position: 'absolute' }}
+                                 alt="face"
+                                 src={avatarAssets.facial[0][avatar.facial]} />
+
+
+                            <img style={{marginTop: '38px', marginLeft: '63px', position: 'absolute', color: '#29ff00' }}
+                                 alt="face"
+                                 src={avatarAssets.face[avatar.face]} />
+
+                        </div>
+
+                    </div>
                     <div className="col-sm-6 bg-purple-lighter">
                         <div className="avatar-group">
-                            <strong>Gezicht</strong>
-                            {this.returnFaces()}
+                            <strong>Achtergrond</strong>
+                            {this.returnAvatarEditors('background')}
                         </div>
+
                         <div className="avatar-group">
                             <strong>Haar</strong>
                         </div>
+
                         <div className="avatar-group">
                             <strong>Tint</strong>
+                            {this.returnAvatarEditors('skin')}
                         </div>
+
                     </div>
+
                     <div className="col-sm-6 bg-blue-lighter">
+
                         <div className="avatar-group">
                             <strong>Vorm</strong>
+                            {this.returnAvatarEditors('head')}
                         </div>
+
                         <div className="avatar-group">
-                            <strong>Achtergrond</strong>
+                            <strong>Gezicht</strong>
+                            {this.returnAvatarEditors('face')}
                         </div>
+
                         <div className="avatar-group">
                             <strong>Gezichthaar</strong>
+                            {this.returnAvatarEditors('facial')}
                         </div>
+
                     </div>
                 </div>
             );

@@ -2,9 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="08aca765-f42e-48ff-8740-058306bbb988" name="Default" comment="">
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/components/AvatarComponent.js" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/src/components/PersonalDataComponent.js" afterPath="$PROJECT_DIR$/src/components/PersonalDataComponent.js" />
+      <change beforePath="$PROJECT_DIR$/src/components/AvatarComponent.js" afterPath="$PROJECT_DIR$/src/components/AvatarComponent.js" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -43,8 +42,8 @@
       <file leaf-file-name="AvatarComponent.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/components/AvatarComponent.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="264">
-              <caret line="43" column="0" lean-forward="true" selection-start-line="43" selection-start-column="0" selection-end-line="43" selection-end-column="0" />
+            <state relative-caret-position="201">
+              <caret line="160" column="37" lean-forward="true" selection-start-line="160" selection-start-column="37" selection-end-line="160" selection-end-column="37" />
               <folding />
             </state>
           </provider>
@@ -53,8 +52,8 @@
       <file leaf-file-name="PersonalDataComponent.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/components/PersonalDataComponent.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="4">
-              <caret line="214" column="5" lean-forward="true" selection-start-line="214" selection-start-column="5" selection-end-line="214" selection-end-column="5" />
+            <state relative-caret-position="-1095">
+              <caret line="262" column="0" lean-forward="false" selection-start-line="262" selection-start-column="0" selection-end-line="262" selection-end-column="0" />
               <folding>
                 <element signature="e#0#42#0" expanded="true" />
                 <marker date="1559562181346" expanded="true" signature="3923:4237" ph="..." />
@@ -202,6 +201,44 @@
               <item name="frmwrk-client" type="b2602c69:ProjectViewProjectNode" />
               <item name="frmwrk-client" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="assets" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="frmwrk-client" type="b2602c69:ProjectViewProjectNode" />
+              <item name="frmwrk-client" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="assets" type="462c0819:PsiDirectoryNode" />
+              <item name="avatar" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="frmwrk-client" type="b2602c69:ProjectViewProjectNode" />
+              <item name="frmwrk-client" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="assets" type="462c0819:PsiDirectoryNode" />
+              <item name="avatar" type="462c0819:PsiDirectoryNode" />
+              <item name="facialhair" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="frmwrk-client" type="b2602c69:ProjectViewProjectNode" />
+              <item name="frmwrk-client" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="assets" type="462c0819:PsiDirectoryNode" />
+              <item name="avatar" type="462c0819:PsiDirectoryNode" />
+              <item name="facialhair" type="462c0819:PsiDirectoryNode" />
+              <item name="color1" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="frmwrk-client" type="b2602c69:ProjectViewProjectNode" />
+              <item name="frmwrk-client" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="assets" type="462c0819:PsiDirectoryNode" />
+              <item name="avatar" type="462c0819:PsiDirectoryNode" />
+              <item name="head" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="frmwrk-client" type="b2602c69:ProjectViewProjectNode" />
+              <item name="frmwrk-client" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="components" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
@@ -220,6 +257,12 @@
     <property name="node.js.path.for.package.eslint" value="project" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.selected.package.eslint" value="$PROJECT_DIR$/node_modules/eslint" />
+    <property name="SearchEverywhereHistoryKey" value="{&#9;FILE&#9;file:///Users/Karim/Documents/Projecten/frmwrk-client/src/components/PersonalDataComponent.js" />
+  </component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/assets/avatar/facialhair/color1" />
+    </key>
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -256,12 +299,12 @@
       <workItem from="1558428553330" duration="13526000" />
       <workItem from="1558510528453" duration="11680000" />
       <workItem from="1559560761122" duration="5275000" />
-      <workItem from="1559567778209" duration="824000" />
+      <workItem from="1559567778209" duration="15939000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="107334000" />
+    <option name="totallyTimeSpent" value="122449000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1280" height="800" extended-state="0" />
@@ -658,8 +701,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/components/PersonalDataComponent.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="4">
-          <caret line="214" column="5" lean-forward="true" selection-start-line="214" selection-start-column="5" selection-end-line="214" selection-end-column="5" />
+        <state relative-caret-position="-1095">
+          <caret line="262" column="0" lean-forward="false" selection-start-line="262" selection-start-column="0" selection-end-line="262" selection-end-column="0" />
           <folding>
             <element signature="e#0#42#0" expanded="true" />
             <marker date="1559562181346" expanded="true" signature="3923:4237" ph="..." />
@@ -669,8 +712,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/components/AvatarComponent.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="264">
-          <caret line="43" column="0" lean-forward="true" selection-start-line="43" selection-start-column="0" selection-end-line="43" selection-end-column="0" />
+        <state relative-caret-position="201">
+          <caret line="160" column="37" lean-forward="true" selection-start-line="160" selection-start-column="37" selection-end-line="160" selection-end-column="37" />
           <folding />
         </state>
       </provider>

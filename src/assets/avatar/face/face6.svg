@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="21px" height="25px" viewBox="0 0 21 25" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 46.2 (44496) - http://www.bohemiancoding.com/sketch -->
+    <title>face6</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Faces" transform="translate(-244.000000, -30.000000)" fill-rule="nonzero">
+            <g id="face6" transform="translate(244.000000, 30.000000)">
+                <ellipse id="Oval" fill="#0B2C48" cx="2.90001225" cy="2.79999399" rx="2.20000005" ry="2.4000001"></ellipse>
+                <ellipse id="Oval" fill="#0B2C48" cx="17.4999878" cy="2.7999939" rx="2.2" ry="2.4"></ellipse>
+                <g id="Group" transform="translate(0.000000, 18.000000)">
+                    <path d="M20.1,1.9 C20.7,3.2 19.8,5 17.9,5.5 C12.7,6.8 8.1,6.8 2.9,5.5 C1.1,5 0.1,3.2 0.7,1.9 L0.7,1.9 C1.3,0.6 2.9,1.11022302e-16 4.4,0.4 C8.6,1.4 12.1,1.4 16.3,0.4 C17.9,1.11022302e-16 19.5,0.6 20.1,1.9 L20.1,1.9 Z" id="Shape" fill="#0B2C48" transform="translate(10.404891, 3.376243) scale(1, -1) translate(-10.404891, -3.376243) "></path>
+                    <path d="M18.6,1.9 C18.4,1.3 18.3,1 18,0.4 C17.5,0.3 16.9,0.3 16.4,0.5 C12.2,1.5 8.7,1.5 4.5,0.5 C4,0.3 3.4,0.3 2.9,0.4 C2.7,1 2.6,1.3 2.3,1.9 C8,3.7 13,3.7 18.6,1.9 Z" id="Shape" fill="#FFFFFF" transform="translate(10.450000, 1.792157) scale(1, -1) translate(-10.450000, -1.792157) "></path>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

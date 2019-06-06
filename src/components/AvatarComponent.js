@@ -31,15 +31,37 @@ const avatarAssets ={
     face: [
         require('./../assets/avatar/face/face1.svg'),
         require('./../assets/avatar/face/face2.svg'),
+        require('./../assets/avatar/face/face3.svg'),
+        require('./../assets/avatar/face/face4.svg'),
+        require('./../assets/avatar/face/face5.svg'),
+        require('./../assets/avatar/face/face6.svg'),
+
+
+
+
     ],
     facial:[
         [
             require('./../assets/avatar/facialhair/color1/facial1.svg'),
             require('./../assets/avatar/facialhair/color1/facial2.svg'),
+            require('./../assets/avatar/facialhair/color1/facial3.svg'),
+            require('./../assets/avatar/facialhair/color1/facial4.svg'),
+            require('./../assets/avatar/facialhair/color1/facial5.svg'),
+            require('./../assets/avatar/facialhair/color1/facial6.svg'),
+            require('./../assets/avatar/facialhair/color1/facial7.svg'),
+            require('./../assets/avatar/facialhair/color1/facial8.svg'),
+
+
         ],
         [
             require('./../assets/avatar/facialhair/color2/facial1.svg'),
             require('./../assets/avatar/facialhair/color2/facial2.svg'),
+            require('./../assets/avatar/facialhair/color2/facial3.svg'),
+            require('./../assets/avatar/facialhair/color2/facial4.svg'),
+            require('./../assets/avatar/facialhair/color2/facial5.svg'),
+            require('./../assets/avatar/facialhair/color2/facial6.svg'),
+            require('./../assets/avatar/facialhair/color2/facial7.svg'),
+            require('./../assets/avatar/facialhair/color2/facial8.svg'),
         ]
 
     ],
@@ -61,7 +83,10 @@ class AvatarComponent extends Component {
                 head: 0,
                 skin: 0,
                 face: 0,
+                hair: 0,
+                hairColor: 0,
                 facial: 0,
+                facialColor: 0,
             }
         };
 
@@ -87,6 +112,10 @@ class AvatarComponent extends Component {
         }
         else if(name[0] === 'facial'){
             arrayLength = (avatarAssets.facial[0].length -1);
+        }
+        else if(name[0] === 'facialColor'){
+            arrayLength = (avatarAssets.facial.length -1);
+
         }
         else{
             console.log(avatarAssets[name]);
@@ -125,25 +154,22 @@ class AvatarComponent extends Component {
 
 
 
-
-    returnAvatarEditors = name =>  {
+    returnAvatarEditors = (name,title) =>  {
         return(
-            <div>
-                <div className="col-md-1" onClick={this.changeBackground('left', [name])}>
-                    Links
-                </div>
+            <div className="avatar-group">
+                <strong>{title}</strong>
+                        <div>
+                            <div className="col-md-1" onClick={this.changeBackground('left', [name])}>
+                        Links
+                    </div>
 
-                <div className="col-md-10">
-                    test
-                </div>
-
-                <div className="col-md-1" onClick={this.changeBackground('right',[name])}>
-                Rechts
+                    <div className="col-md-1" onClick={this.changeBackground('right',[name])}>
+                        Rechts
+                    </div>
                 </div>
             </div>
             )
     };
-
 
 
     render() {
@@ -172,51 +198,35 @@ class AvatarComponent extends Component {
                                  alt="face"
                                  src={avatarAssets.face[avatar.face]} />
 
-                            <img style={{marginTop: '31px', marginLeft: '-67px', position: 'absolute' }}
+                            <img style={{marginTop: '30px', marginLeft: '-76px', position: 'absolute' }}
                                  alt="face"
-                                 src={avatarAssets.facial[0][avatar.facial]} />
+                                 src={avatarAssets.facial[avatar.facialColor][avatar.facial]} />
 
 
-                            <img style={{marginTop: '38px', marginLeft: '63px', position: 'absolute', color: '#29ff00' }}
-                                 alt="face"
-                                 src={avatarAssets.face[avatar.face]} />
-
+                            <img style={{marginTop: '38px', marginLeft: '63px', position: 'absolute', fill: '#29ff00' }}
+                                 src={avatarAssets.facial[avatar.facialColor][avatar.facial]} />
                         </div>
-
                     </div>
                     <div className="col-sm-6 bg-purple-lighter">
-                        <div className="avatar-group">
-                            <strong>Achtergrond</strong>
-                            {this.returnAvatarEditors('background')}
-                        </div>
+                            {this.returnAvatarEditors('background','Achtergrond')}
 
                         <div className="avatar-group">
                             <strong>Haar</strong>
                         </div>
 
-                        <div className="avatar-group">
-                            <strong>Tint</strong>
-                            {this.returnAvatarEditors('skin')}
-                        </div>
+                            {this.returnAvatarEditors('skin','Tint')}
 
                     </div>
-
                     <div className="col-sm-6 bg-blue-lighter">
 
-                        <div className="avatar-group">
-                            <strong>Vorm</strong>
-                            {this.returnAvatarEditors('head')}
-                        </div>
 
-                        <div className="avatar-group">
-                            <strong>Gezicht</strong>
-                            {this.returnAvatarEditors('face')}
-                        </div>
+                            {this.returnAvatarEditors('head','Vorm')}
 
-                        <div className="avatar-group">
-                            <strong>Gezichthaar</strong>
-                            {this.returnAvatarEditors('facial')}
-                        </div>
+                            {this.returnAvatarEditors('face', 'Gezicht')}
+
+                            {this.returnAvatarEditors('facial','Gezichtshaar')}
+
+                        {this.returnAvatarEditors('facialColor','Gezichthaar Kleur')}
 
                     </div>
                 </div>

@@ -5,17 +5,17 @@
     <desc>Created with Sketch.</desc>
     <defs></defs>
     <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-        <g id="Facial" transform="translate(-219.000000, 0.000000)">
+        <g id="Facial" transform="translate(-219.000000, -1.000000)">
             <g id="color1">
-                <g id="facial5" transform="translate(219.000000, 0.000000)">
+                <g id="facial5" transform="translate(219.000000, 1.000000)">
                     <g id="Boundaries" opacity="0.01">
                         <rect id="Rectangle" fill="#8D6464" opacity="0.545629529" x="0" y="0" width="46" height="41"></rect>
                         <path d="M45.5,8.5 L3.5,8.5" id="Line" stroke="#979797" stroke-linecap="square"></path>
                         <rect id="right" fill="#26E213" x="27.0999756" y="0" width="9.30000019" height="8"></rect>
                         <rect id="left" fill="#26E213" x="9.90002441" y="0" width="9.30000019" height="8"></rect>
                     </g>
-                    <path d="M17.5,5.50388405 C19.2,6.00388405 19.9,3.40388405 18.2,2.90388405 C15.4,2.10388405 12.4,2.80388405 10.3,4.80388405 C9.1,6.00388405 10.9,7.90388405 12.2,6.70388405 C13.7,5.40388405 15.7,4.90388405 17.5,5.50388405 Z" id="Shape" fill="#E36A41" fill-rule="nonzero"></path>
-                    <path d="M28.1,2.90388405 C26.4,3.40388405 27.1,6.00388405 28.8,5.50388405 C30.7,5.00388405 32.7,5.40388405 34.1,6.70388405 C35.4,7.90388405 37.2,6.00388405 36,4.80388405 C33.8,2.80388405 30.9,2.10388405 28.1,2.90388405 Z" id="Shape" fill="#E36A41" fill-rule="nonzero"></path>
+                    <path d="M17.5,5.50388405 C19.2,6.00388405 19.9,3.40388405 18.2,2.90388405 C15.4,2.10388405 12.4,2.80388405 10.3,4.80388405 C9.1,6.00388405 10.9,7.90388405 12.2,6.70388405 C13.7,5.40388405 15.7,4.90388405 17.5,5.50388405 Z" id="Shape" fill="#E36A41" fill-rule="nonzero" opacity="0"></path>
+                    <path d="M28.1,2.90388405 C26.4,3.40388405 27.1,6.00388405 28.8,5.50388405 C30.7,5.00388405 32.7,5.40388405 34.1,6.70388405 C35.4,7.90388405 37.2,6.00388405 36,4.80388405 C33.8,2.80388405 30.9,2.10388405 28.1,2.90388405 Z" id="Shape" fill="#E36A41" fill-rule="nonzero" opacity="0"></path>
                     <g id="Group" transform="translate(12.000000, 21.000000)" fill-rule="nonzero" fill="#BA4A27">
                         <g transform="translate(10.000000, 0.000000)" id="Shape">
                             <path d="M5.6,1.6 L1.1,5.5 C1.2,5.7 1.4,5.9 1.5,6.1 C3.3,8.2 6.9,8 9.6,5.6 C11.2,4.2 12.1,2.3 12.2,0.6 C10.1,2.3 7.4,2.6 5.6,1.6 Z"></path>

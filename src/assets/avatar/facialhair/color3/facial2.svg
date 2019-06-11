@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="46px" height="41px" viewBox="0 0 46 41" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 46.2 (44496) - http://www.bohemiancoding.com/sketch -->
+    <title>facial2</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Facial" transform="translate(-57.000000, -114.000000)">
+            <g id="color3" transform="translate(0.000000, 114.000000)">
+                <g id="facial2" transform="translate(57.000000, 0.000000)">
+                    <g id="Boundaries" opacity="0.01">
+                        <rect id="Rectangle" fill="#8D6464" opacity="0.545629529" x="0" y="0" width="46" height="41"></rect>
+                        <path d="M45.5,8.5 L3.5,8.5" id="Line" stroke="#979797" stroke-linecap="square"></path>
+                        <rect id="right" fill="#26E213" x="27.0999756" y="0" width="9.30000019" height="8"></rect>
+                        <rect id="left" fill="#26E213" x="9.90002441" y="0" width="9.30000019" height="8"></rect>
+                    </g>
+                    <g id="Group" opacity="0" transform="translate(9.000000, 2.000000)" fill-rule="nonzero" fill="#F0CA4A">
+                        <path d="M3.3,4.70388405 C4.8,3.40388405 6.8,2.90388405 8.6,3.50388405 C10.3,4.00388405 11,1.40388405 9.3,0.903884053 C6.5,0.103884053 3.5,0.803884053 1.4,2.80388405 C0.1,4.00388405 2,5.80388405 3.3,4.70388405 L3.3,4.70388405 Z" id="Shape"></path>
+                        <path d="M19.1,0.903884053 C17.4,1.40388405 18.1,4.00388405 19.8,3.50388405 C21.7,3.00388405 23.7,3.40388405 25.1,4.70388405 C26.4,5.80388405 28.3,4.00388405 27,2.80388405 C24.8,0.803884053 21.9,0.103884053 19.1,0.903884053 Z" id="Shape"></path>
+                    </g>
+                    <path d="M31.7,27.8999939 C29.7,24.4999939 26.8,22.3999939 23.6,22.3999939 C20.3,22.3999939 17.4,24.5999939 15.5,27.8999939 L31.7,27.8999939 Z" id="Shape" fill="#F0CA4A" fill-rule="nonzero"></path>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

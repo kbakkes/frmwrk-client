@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="46px" height="41px" viewBox="0 0 46 41" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 46.2 (44496) - http://www.bohemiancoding.com/sketch -->
+    <title>eyebrows4</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Eyebrows" transform="translate(-167.000000, -84.000000)">
+            <g id="color3" transform="translate(0.000000, 84.000000)">
+                <g id="eyebrows4" transform="translate(167.000000, 0.000000)">
+                    <g id="Boundaries" opacity="0.01">
+                        <rect id="Rectangle" fill="#8D6464" opacity="0.545629529" x="0" y="0" width="46" height="41"></rect>
+                        <path d="M45.5,8.5 L3.5,8.5" id="Line" stroke="#979797" stroke-linecap="square"></path>
+                        <rect id="right" fill="#26E213" x="27.0999756" y="0" width="9.30000019" height="8"></rect>
+                        <rect id="left" fill="#26E213" x="9.90002441" y="0" width="9.30000019" height="8"></rect>
+                    </g>
+                    <g id="eyes" transform="translate(9.000000, 3.000000)" fill-rule="nonzero" fill="#F0CA4A">
+                        <path d="M9.77173574,3.51067812 C11.9717357,3.61067812 11.9717357,0.110678119 9.77173574,0.0106781187 C6.67173574,-0.0893218813 3.67173574,0.510678119 0.871735744,1.91067812 C-1.12826426,3.01067812 0.671735744,6.01067812 2.67173574,5.01067812 C4.87173574,3.91067812 7.37173574,3.51067812 9.77173574,3.51067812 Z" id="Shape"></path>
+                        <path d="M25.6717357,5.01067812 C23.4717357,3.91067812 20.9717357,3.51067812 18.5717357,3.51067812 C16.3717357,3.61067812 16.3717357,0.110678119 18.5717357,0.0106781187 C21.6717357,-0.0893218813 24.6717357,0.510678119 27.4717357,1.91067812 C29.3717357,3.01067812 27.6717357,6.01067812 25.6717357,5.01067812 L25.6717357,5.01067812 Z" id="Shape"></path>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

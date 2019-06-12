@@ -3,14 +3,6 @@ import TextField from '@material-ui/core/TextField';
 import MenuItem from '@material-ui/core/MenuItem';
 
 
-const user = {
-    voornaam: "Karim",
-    achternaam: "Bakkes",
-    emailadres: "karim@frmwrk.nl",
-    functie: "Fullstack Drupal Developer",
-    werkervaring: 2,
-};
-
 
 const functies = [
     {

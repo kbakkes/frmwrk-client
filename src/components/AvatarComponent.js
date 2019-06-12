@@ -179,15 +179,11 @@ class AvatarComponent extends Component {
 
                     </div>
                     <div className="col-sm-6 ">
-
-
                             {this.returnAvatarEditors('head','Vorm')}
                             {this.returnAvatarEditors('face', 'Gezicht')}
                             {this.returnAvatarEditors('facial','Gezichtshaar')}
                             {this.returnAvatarEditors('facialColor','Gezichthaar Kleur')}
                             {this.returnAvatarEditors('eyebrowsColor','Wenkbrauwen Kleur')}
-
-
                     </div>
                 </div>
             );

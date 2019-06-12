@@ -9,6 +9,8 @@ import {createMuiTheme} from "@material-ui/core/styles/index";
 import IconButton from '@material-ui/core/IconButton';
 import DeleteIcon from '@material-ui/icons/Delete';
 import AvatarComponent from "./AvatarComponent";
+import { BrowserRouter as Router, Route, Link } from "react-router-dom";
+
 
 
 
@@ -388,7 +390,6 @@ class PersonalDataComponent extends Component {
                                 onChange={this.handleBuilderChanges}
                             />
 
-
                             <div className="row">
                                 <div className="col-md-6">
                                     <h2 className="skills-title pt-4">Vaardigheden</h2>
@@ -416,8 +417,19 @@ class PersonalDataComponent extends Component {
                         </div>
                     </div>
                     <div className="flex justify-center">
-                        <Button onClick={this.addSkill} style={styles.send} color="secondary" variant="contained">Verzend
-                            Sollicitatie</Button>
+                            <Link
+                                to={{
+                                    pathname: "/confirm/" + this.props.sollicitatie,
+                                    state: {
+                                        sollicitatie: this.state.sollicitatie,
+                                        avatar: this.state.avatar
+                                    }
+                                }}
+                            >
+                                <Button  style={styles.send} color="secondary" variant="contained">
+                            Verzend
+                                </Button>
+                            </Link>
                     </div>
                 </div>
             );

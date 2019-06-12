@@ -1,7 +1,7 @@
 import React, { Component }  from 'react';
 import avatarAssets from './../assets/avatarAssets';
-import Left from '@material-ui/icons/ArrowBack';
-import Right from '@material-ui/icons/ArrowForward';
+import Left from '@material-ui/icons/NavigateBefore';
+import Right from '@material-ui/icons/NavigateNext';
 
 
 
@@ -104,10 +104,10 @@ class AvatarComponent extends Component {
     returnAvatarEditors = (name,title) =>  {
         return(
             <div className="avatar-group">
-                <strong>{title}</strong>
+                <strong className="buider-title">{title}</strong>
                         <div className="row">
                             <div className="col-md-2 avatarButton" onClick={this.changeBackground('left', [name])}>
-                                <Left/>
+                                <Left />
                             </div>
                                 <div className="col-md-2 avatarButton" onClick={this.changeBackground('right',[name])}>
                                     <Right />

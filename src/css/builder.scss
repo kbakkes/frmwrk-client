@@ -55,17 +55,13 @@
   padding-top: 4px;
   margin-bottom: 25px;
   height: 40px;
+  padding-bottom: 10px;
 }
-
-  .red-eyebrow{
-    fill: #45ff09;
-  }
-
 
   .avatarButton{
     background-color: #cc446f;
-    color: white;
-    padding-left: 11px;
+    color: #eaeaea;
+    padding-left: 14px;
     padding-top: 2px;
     margin-left: 10px;
     margin-top: 5px;
@@ -82,7 +78,20 @@
   margin-top: 5px;
   margin-bottom: 5px;
   box-shadow: 0px 1px 5px 0px rgba(0,0,0,0.2), 0px 2px 2px 0px rgba(0,0,0,0.14), 0px 3px 1px -2px rgba(0,0,0,0.12);
-  border-radius: 10%;
+  border-radius: 5%;
+}
+
+.buider-title {
+  font-family: 'Ubuntu';
+  color: #404141;
+  font-size: 14px;
+  margin-top: 5px;
+  text-align: center;
+  margin-left: -3px;
+}
+
+.builder-icon{
+  height: 0em;
 }
 
 

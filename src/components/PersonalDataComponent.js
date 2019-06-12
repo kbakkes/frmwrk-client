@@ -68,7 +68,6 @@ const styles = {
 };
 
 class PersonalDataComponent extends Component {
-
     constructor(props){
         super();
         this.state = {
@@ -78,8 +77,8 @@ class PersonalDataComponent extends Component {
             sollicitatie: []
         };
 
-
         this.addSkill = this.addSkill.bind(this);
+        this.handleBuilderChanges = this.handleBuilderChanges.bind(this);
         this.handleFormChange = this.handleFormChange.bind(this);
         this.handleFunctieChange = this.handleFunctieChange.bind(this);
         this.returnFunctieDropdown = this.returnFunctieDropdown.bind(this);
@@ -104,9 +103,16 @@ class PersonalDataComponent extends Component {
                 });
             });
 
-        this.getAllFuncties();
-
+            this.getAllFuncties();
+        this.returnFunctie(this.state.sollicitatie.functie);
     }
+
+    componentDidMount(){
+        this.returnFunctie();
+        console.log('ja');
+    }
+
+
 
 
     getAllFuncties(){
@@ -125,25 +131,20 @@ class PersonalDataComponent extends Component {
                     loadingFunctions: false,
                 });
             });
+
     }
 
-    returnFunctie(functieID){
-        fetch('http://127.0.0.1:8000/api/vacatures/' + functieID, {
-            headers : {
-                'Content-Type': 'application/json',
-                'Accept': 'application/json',
-            }
-        })
-            .then(res => res.json())
-            .then(functienaam => {
-                this.setState({
-                        functienaam: functienaam.functie
-                });
-                return functienaam.functie;
-            });
+    returnFunctie(){
+        let newFunctie;
+        if(this.state.functies.length > 1){
+            (this.state.functies.map((functie) => {
+                if(functie._id === this.state.sollicitatie.functie){
+                    newFunctie = functie.functie;
+                }
+            }));
+           return newFunctie;
+        }
     }
-
-
 
 
     addSkill(){
@@ -166,7 +167,7 @@ class PersonalDataComponent extends Component {
         } else{
             return(
                 <TextField onChange={this.handleFunctieChange} style={styles.root}
-                           id='functies' InputProps={{disableUnderline: true}} value={this.state.functienaam} fullWidth={true} select>
+                           id='functies' InputProps={{disableUnderline: true}} value={this.returnFunctie()} fullWidth={true} select>
                     {this.state.functies.map(functie => (
                         <MenuItem key={functie.functie} value={functie.functie} id={functie._id}>
                             {functie.functie}
@@ -219,7 +220,7 @@ class PersonalDataComponent extends Component {
 
     handleVaardighedenChange = idx => evt => {
         let oldSollicitatie = this.state.sollicitatie;
-        const newShareholders = this.state.sollicitatie.vaardigheden.map((skill, sidx) => {
+        const newSollicitatie = this.state.sollicitatie.vaardigheden.map((skill, sidx) => {
             if (idx !== sidx) return skill;
             return {
                 ervaring: skill.ervaring,
@@ -227,7 +228,7 @@ class PersonalDataComponent extends Component {
             };
         });
 
-        oldSollicitatie.vaardigheden = newShareholders;
+        oldSollicitatie.vaardigheden = newSollicitatie;
 
         this.setState({ sollicitatie: oldSollicitatie });
     };
@@ -251,7 +252,7 @@ class PersonalDataComponent extends Component {
 
     handleErvaringChange = idx => (evt,value) => {
         let oldSollicitatie = this.state.sollicitatie;
-        const newShareholders = this.state.sollicitatie.vaardigheden.map((skill, sidx) => {
+        const newSollicitatie = this.state.sollicitatie.vaardigheden.map((skill, sidx) => {
             if (idx !== sidx) return skill;
             return {
                 vaardigheid: skill.vaardigheid,
@@ -259,7 +260,7 @@ class PersonalDataComponent extends Component {
             };
         });
 
-        oldSollicitatie.vaardigheden = newShareholders;
+        oldSollicitatie.vaardigheden = newSollicitatie;
 
         this.setState({ sollicitatie: oldSollicitatie });
     };
@@ -279,6 +280,33 @@ class PersonalDataComponent extends Component {
         this.setState({
                 sollicitatie: oldSollicitatie
             });
+    };
+
+    getAvatar(){
+        if(typeof this.state.avatar !== 'undefined' ){
+            return this.state.avatar
+        } else {
+            let defaultAvatar =  {
+                    background: 0,
+                    head: 0,
+                    skin: 0,
+                    face: 0,
+                    hair: 0,
+                    hairColor: 0,
+                    facial: 0,
+                    facialColor: 0,
+                    eyebrows: 0,
+                    eyebrowsColor: 0,
+                    glasses: 0,
+            };
+            return defaultAvatar
+        }
+    }
+
+
+    handleBuilderChanges(avatar){
+        this.setState({ avatar: avatar});
+        console.log(this.state)
     };
 
 
@@ -319,7 +347,8 @@ class PersonalDataComponent extends Component {
                             </div>
                             <div className="form-group">
                                 <strong>Functie</strong>
-                                {this.returnFunctie(this.state.sollicitatie.functie)}
+                                {/*{this.returnFunctie(this.state.sollicitatie.functie)}*/}
+
                                 {this.returnFunctieDropdown()}
                             </div>
                             <div className="form-group">
@@ -331,7 +360,13 @@ class PersonalDataComponent extends Component {
                         </div>
                         <div className="col-md-7" style={{paddingLeft: '35px'}}>
 
-                            <AvatarComponent/>
+
+
+                            <AvatarComponent
+                                avatar={this.getAvatar()}
+                                onChange={this.handleBuilderChanges}
+                            />
+
 
                             <div className="row">
                                 <div className="col-md-6">

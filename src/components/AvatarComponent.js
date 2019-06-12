@@ -12,17 +12,17 @@ class AvatarComponent extends Component {
         this.state = {
             isLoading: true,
             avatar: {
-                background: 0,
-                head: 0,
-                skin: 0,
-                face: 0,
-                hair: 0,
-                hairColor: 0,
-                facial: 0,
-                facialColor: 0,
-                eyebrows: 0,
-                eyebrowsColor: 0,
-                glasses: 0,
+                background: props.avatar.background,
+                head: props.avatar.head,
+                skin: props.avatar.skin,
+                face: props.avatar.face,
+                hair: props.avatar.hair,
+                hairColor: props.avatar.hairColor,
+                facial: props.avatar.facial,
+                facialColor: props.avatar.facialColor,
+                eyebrows: props.avatar.eyebrows,
+                eyebrowsColor: props.avatar.eyebrowsColor,
+                glasses: props.avatar.glasses,
             }
         };
 
@@ -65,7 +65,6 @@ class AvatarComponent extends Component {
             arrayLength = (avatarAssets.eyebrows.length -1);
         }
         else{
-            console.log(avatarAssets[name]);
              arrayLength = (avatarAssets[name].length -1);
         }
 
@@ -97,9 +96,16 @@ class AvatarComponent extends Component {
             avatar: oldAvatar
         });
         console.log(this.state.avatar);
+
+        // Data terugsturen naar parent component
+        this.handleBuilderChange(oldAvatar)
     };
 
 
+
+    handleBuilderChange(avatar){
+        this.props.onChange(avatar);
+    }
 
     returnAvatarEditors = (name,title) =>  {
         return(
@@ -129,9 +135,7 @@ class AvatarComponent extends Component {
                 <div className="row">
 
                     <div className="col-md-3 " />
-                    <div className="col-md-5 text-center "
-                         // style={{backgroundColor: '#ffd3c7'}}
-                    >
+                    <div className="col-md-5 text-center ">
 
                         <div style={{
                             backgroundColor: avatarAssets.background[avatar.background],
@@ -161,6 +165,7 @@ class AvatarComponent extends Component {
                                  src={avatarAssets.glasses[avatar.glasses]} />
                         </div>
                     </div>
+
 
                     <div className="col-md-4 " />
 

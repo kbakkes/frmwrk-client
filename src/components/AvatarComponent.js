@@ -170,16 +170,11 @@ class AvatarComponent extends Component {
                     <div className="col-md-4 " />
 
                     <div className="col-sm-6">
-                            {this.returnAvatarEditors('background','Achtergrond')}
-
+                        {this.returnAvatarEditors('background','Achtergrond')}
                         {this.returnAvatarEditors('hair','Haar')}
-
                         {this.returnAvatarEditors('hairColor','Haarkleur')}
-
                         {this.returnAvatarEditors('skin','Tint')}
-
                         {this.returnAvatarEditors('eyebrows','Wenkbrauwen')}
-
                         {this.returnAvatarEditors('glasses','Bril')}
 
                     </div>
@@ -187,14 +182,10 @@ class AvatarComponent extends Component {
 
 
                             {this.returnAvatarEditors('head','Vorm')}
-
                             {this.returnAvatarEditors('face', 'Gezicht')}
-
                             {this.returnAvatarEditors('facial','Gezichtshaar')}
-
-                        {this.returnAvatarEditors('facialColor','Gezichthaar Kleur')}
-
-                        {this.returnAvatarEditors('eyebrowsColor','Wenkbrauwen Kleur')}
+                            {this.returnAvatarEditors('facialColor','Gezichthaar Kleur')}
+                            {this.returnAvatarEditors('eyebrowsColor','Wenkbrauwen Kleur')}
 
 
                     </div>

@@ -84,11 +84,14 @@ class PersonalDataComponent extends Component {
         this.returnFunctieDropdown = this.returnFunctieDropdown.bind(this);
     }
 
+    // 5cd2e2fb465b4abc67b4c77a
+    // 5cd2e515160a47be28b5aaa9
 
 
     componentWillMount(){
         console.log('test');
-        fetch('http://127.0.0.1:8000/api/sollicitaties/5cd2e2fb465b4abc67b4c77a', {
+        let sollicitatieID  = this.props.sollicitatie;
+        fetch('http://127.0.0.1:8000/api/sollicitaties/' + sollicitatieID, {
             headers : {
                 'Content-Type': 'application/json',
                 'Accept': 'application/json',
@@ -180,6 +183,24 @@ class PersonalDataComponent extends Component {
 
 
     returnSkills(skills){
+        //Als er geen ervaring is toegevoegd Skills toevoegen op de juiste manier
+        let newskills = [];
+        if(typeof skills[0].vaardigheid === 'undefined' ){
+            skills.map(skill => {
+                 newskills.push({
+                     vaardigheid: skill,
+                     ervaring: 0
+                 });
+            });
+
+            let oldSollicitatie = this.state.sollicitatie;
+            oldSollicitatie.vaardigheden = newskills;
+
+            this.setState({
+                sollicitatie: oldSollicitatie
+            })
+        }
+
         return skills.map((skill, idx) => {
             return(
                 <div className="row" key={idx+1}>
@@ -370,7 +391,7 @@ class PersonalDataComponent extends Component {
 
                             <div className="row">
                                 <div className="col-md-6">
-                                    <h2 className="skills-title">Vaardigheden</h2>
+                                    <h2 className="skills-title pt-4">Vaardigheden</h2>
                                 </div>
                             </div>
                             <div className="row">

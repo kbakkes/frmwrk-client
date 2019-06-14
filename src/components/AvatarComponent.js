@@ -9,25 +9,45 @@ import Right from '@material-ui/icons/NavigateNext';
 class AvatarComponent extends Component {
     constructor(props) {
         super();
-        this.state = {
-            isLoading: true,
-            avatar: {
-                background: props.avatar.background,
-                head: props.avatar.head,
-                skin: props.avatar.skin,
-                face: props.avatar.face,
-                hair: props.avatar.hair,
-                hairColor: props.avatar.hairColor,
-                facial: props.avatar.facial,
-                facialColor: props.avatar.facialColor,
-                eyebrows: props.avatar.eyebrows,
-                eyebrowsColor: props.avatar.eyebrowsColor,
-                glasses: props.avatar.glasses,
+        if(props.background === undefined){
+            this.state = {
+                isLoading: true,
+                avatar: {
+                    background: 0,
+                    head: 0,
+                    skin: 0,
+                    face: 0,
+                    hair: 0,
+                    hairColor: 0,
+                    facial: 0,
+                    facialColor: 0,
+                    eyebrows: 0,
+                    eyebrowsColor: 0,
+                    glasses: 0,
+
+                }
+            };
+        } else {
+            this.state = {
+                isLoading: true,
+                avatar: {
+                    background: props.background,
+                    head: props.head,
+                    skin: props.skin,
+                    face: props.face,
+                    hair: props.hair,
+                    hairColor: props.hairColor,
+                    facial: props.facial,
+                    facialColor: props.facialColor,
+                    eyebrows: props.eyebrows,
+                    eyebrowsColor: props.eyebrowsColor,
+                    glasses: props.glasses,
+                }
             }
-        };
+        }
 
         this.returnAvatarEditors = this.returnAvatarEditors.bind(this);
-        this.changeBackground = this.changeBackground.bind(this);
+        this.changeAvatar = this.changeAvatar.bind(this);
     }
 
 
@@ -37,10 +57,9 @@ class AvatarComponent extends Component {
         })
     }
 
-    changeBackground = (dir,name) => evt => {
+    changeAvatar = (dir,name) => evt => {
         let oldAvatar = this.state.avatar;
         let arrayLength;
-
 
         // voor skins extra scope
         if(name[0] === 'head'){
@@ -108,20 +127,23 @@ class AvatarComponent extends Component {
     }
 
     returnAvatarEditors = (name,title) =>  {
-        return(
-            <div className="avatar-group">
-                <strong className="buider-title">{title}</strong>
-                        <div className="row">
-                            <div className="col-md-2 avatarButton" onClick={this.changeBackground('left', [name])}>
-                                <Left />
-                            </div>
-                                <div className="col-md-2 avatarButton" onClick={this.changeBackground('right',[name])}>
-                                    <Right />
-                                </div>
+        if(this.props.options === true) {
+            return (
+                <div className="avatar-group">
+                    <strong className="buider-title">{title}</strong>
+                    <div className="row">
+                        <div className="col-md-2 avatarButton" onClick={this.changeAvatar('left', [name])}>
+                            <Left/>
+                        </div>
+                        <div className="col-md-2 avatarButton" onClick={this.changeAvatar('right', [name])}>
+                            <Right/>
+                        </div>
+                    </div>
                 </div>
-            </div>
             )
+        }
     };
+
 
 
     render() {
@@ -156,13 +178,19 @@ class AvatarComponent extends Component {
                                  src={avatarAssets.facial[avatar.facialColor][avatar.facial]} />
 
                             <img style={{marginTop: '-1px', marginLeft: '-93px', position: 'absolute'}}
-                                 src={avatarAssets.hair[avatar.hairColor][avatar.hair]} />
+                                 src={avatarAssets.hair[avatar.hairColor][avatar.hair]}
+                                 alt="hair"
+                            />
 
                             <img style={{marginTop: '30px', marginLeft: '-76px', position: 'absolute'}}
-                                 src={avatarAssets.eyebrows[avatar.eyebrowsColor][avatar.eyebrows]} />
+                                 src={avatarAssets.eyebrows[avatar.eyebrowsColor][avatar.eyebrows]}
+                                 alt="brows"
+                            />
 
                             <img style={{marginTop: '30px', marginLeft: '-75px', position: 'absolute'}}
-                                 src={avatarAssets.glasses[avatar.glasses]} />
+                                 src={avatarAssets.glasses[avatar.glasses]}
+                                 alt="glasses"
+                            />
                         </div>
                     </div>
 
@@ -179,12 +207,13 @@ class AvatarComponent extends Component {
 
                     </div>
                     <div className="col-sm-6 ">
-                            {this.returnAvatarEditors('head','Vorm')}
-                            {this.returnAvatarEditors('face', 'Gezicht')}
-                            {this.returnAvatarEditors('facial','Gezichtshaar')}
-                            {this.returnAvatarEditors('facialColor','Gezichthaar Kleur')}
-                            {this.returnAvatarEditors('eyebrowsColor','Wenkbrauwen Kleur')}
+                        {this.returnAvatarEditors('head','Vorm')}
+                        {this.returnAvatarEditors('face', 'Gezicht')}
+                        {this.returnAvatarEditors('facial','Gezichtshaar')}
+                        {this.returnAvatarEditors('facialColor','Gezichthaar Kleur')}
+                        {this.returnAvatarEditors('eyebrowsColor','Wenkbrauwen Kleur')}
                     </div>
+
                 </div>
             );
         }

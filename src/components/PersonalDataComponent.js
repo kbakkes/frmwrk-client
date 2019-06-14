@@ -388,6 +388,7 @@ class PersonalDataComponent extends Component {
                             <AvatarComponent
                                 avatar={this.getAvatar()}
                                 onChange={this.handleBuilderChanges}
+                                options={true}
                             />
 
                             <div className="row">
@@ -416,18 +417,20 @@ class PersonalDataComponent extends Component {
 
                         </div>
                     </div>
+                    {console.log(this.state)}
                     <div className="flex justify-center">
                             <Link
                                 to={{
                                     pathname: "/confirm/" + this.props.sollicitatie,
                                     state: {
                                         sollicitatie: this.state.sollicitatie,
-                                        avatar: this.state.avatar
+                                        avatar: this.state.avatar,
+                                        functie: this.returnFunctie()
                                     }
                                 }}
                             >
                                 <Button  style={styles.send} color="secondary" variant="contained">
-                            Verzend
+                                    Verzend
                                 </Button>
                             </Link>
                     </div>

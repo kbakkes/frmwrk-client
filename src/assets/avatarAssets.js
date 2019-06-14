@@ -1,10 +1,18 @@
  export const avatarAssets = {
     background:  [
         '#6DB8DE',
-        '#E83837',
+        '#e85350',
         '#55A896',
         '#E36A41',
-        '#a9ffe7',
+        '#83d5c2',
+        '#F0CA4A',
+        '#B8BEC2',
+        '#F18C80',
+        '#008162',
+        '#51646F',
+
+
+
     ],
     skin:
         [

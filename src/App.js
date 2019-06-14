@@ -2,7 +2,7 @@ import React from 'react';
 import './App.css';
 import './css/tailwind.css';
 import './css/grid.css';
-import { BrowserRouter as Router, Route, Link } from "react-router-dom";
+import { BrowserRouter as Router, Route } from "react-router-dom";
 import HeaderComponent from './components/headerComponent';
 import BuilderComponent from './components/BuilderComponent';
 import ConfirmComponent from "./components/ConfirmComponent";

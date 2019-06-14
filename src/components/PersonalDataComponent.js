@@ -9,7 +9,7 @@ import {createMuiTheme} from "@material-ui/core/styles/index";
 import IconButton from '@material-ui/core/IconButton';
 import DeleteIcon from '@material-ui/icons/Delete';
 import AvatarComponent from "./AvatarComponent";
-import { BrowserRouter as Router, Route, Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 
 
@@ -68,6 +68,8 @@ const styles = {
         borderRadius: '3px'
     },
 };
+
+
 
 class PersonalDataComponent extends Component {
     constructor(props){

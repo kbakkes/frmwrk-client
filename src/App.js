@@ -18,7 +18,7 @@ function App() {
         </div>
 
           <Route path="/" exact component={Index} />
-          <Route name="builder" path="/sollicitatie/:sollicitatie/" component={BuilderComponent} />
+          <Route name="builder" path="/edit/:sollicitatie/" component={BuilderComponent} />
           <Route name="builder" path="/confirm/:sollicitatie/" component={ConfirmComponent} />
 
 

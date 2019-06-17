@@ -2,6 +2,7 @@ import React, { Component }  from 'react';
 import axios from 'axios';
 import AvatarComponent from "./AvatarComponent";
 import Button from '@material-ui/core/Button';
+import composeMessage from './../assets/messageComposer';
 
 const styles = {
     send: {
@@ -62,12 +63,53 @@ class ConfirmComponent extends Component {
                 console.log(error);
             });
 
+        this.notifySlack(sollicitatie, avatar);
         console.log('state',this.state);
         this.setState({
             isConfirmed: true,
         });
 
     };
+
+    returnVaardigheden = (sollicitatie) => {
+        return sollicitatie.vaardigheden.map((vaardigheid) => {
+            return ("\n - " + vaardigheid.vaardigheid);
+        })
+    };
+
+
+
+
+    notifySlack(sollicitatie, avatar){
+        console.log(sollicitatie);
+        let vaardigheden = this.returnVaardigheden(sollicitatie);
+
+        let data = {
+                text: "*We hebben een nieuwe sollicitatie ontvangen!* :gem: :tada: \n \n" +
+                 sollicitatie.voornaam + " " + sollicitatie.achternaam
+                + " heeft gesolliciteerd voor de functie als " + this.props.location.state.functie + "." +
+                   "\n" + sollicitatie.voornaam + " beschikt over de volgende vaardigheden: " + vaardigheden + ".\n" +
+                    "contact kan worden opgenomen via: " + sollicitatie.emailadres + "\n \n" +
+                    "De volledige sollicatie kan worden teruggekeken op: " + "http://localhost:3000/sollicitatie/" + sollicitatie._id
+
+
+            };
+
+
+        axios.post('https://hooks.slack.com/services/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', data, {
+
+            headers: {
+                'Content-Type': 'application/x-www-form-urlencoded'
+            }
+
+        }).then(function (response) {
+                console.log('Post gedaan',response);
+            })
+                .catch(function (error) {
+                    console.log(error);
+                });
+    }
+
 
 
 

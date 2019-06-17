@@ -47,6 +47,8 @@ class ConfirmComponent extends Component {
 
     sendSollicitatie = (sollicitatie, avatar) => evt => {
 
+        console.log(avatar);
+
         axios.put('http://localhost:8000/api/sollicitaties/' +  sollicitatie._id, {
             voornaam: sollicitatie.voornaam,
             achternaam: sollicitatie.achternaam,
@@ -54,7 +56,19 @@ class ConfirmComponent extends Component {
             functie: sollicitatie.functie,
             werkervaring: sollicitatie.werkervaring,
             vaardigheden: sollicitatie.vaardigheden,
-            avatar: avatar,
+            avatar: {
+                background: avatar.background,
+                head: avatar.head,
+                skin: avatar.skin,
+                face: avatar.face,
+                hair: avatar.hair,
+                hairColor: avatar.hairColor,
+                facial: avatar.facial,
+                facialColor: avatar.facialColor,
+                eyebrows: avatar.eyebrows,
+                eyebrowsColor: avatar.eyebrowsColor,
+                glasses: avatar.glasses
+            }
         })
             .then(function (response) {
                 console.log('CALL SUCCESSFULL...',response);
@@ -90,9 +104,8 @@ class ConfirmComponent extends Component {
                 + " heeft gesolliciteerd voor de functie als " + this.props.location.state.functie + "." +
                    "\n" + sollicitatie.voornaam + " beschikt over de volgende vaardigheden: " + vaardigheden + ".\n" +
                     "contact kan worden opgenomen via: " + sollicitatie.emailadres + "\n \n" +
-                    "De volledige sollicatie kan worden teruggekeken op: " + "http://localhost:3000/sollicitatie/" + sollicitatie._id
-
-
+                    "De volledige sollicatie kan worden teruggekeken op: " + "http://localhost:3000/sollicitatie/" + sollicitatie._id +
+                    "\n " + avatar.background
             };
 
 

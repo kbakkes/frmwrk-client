@@ -116,7 +116,6 @@ class PersonalDataComponent extends Component {
 
     componentDidMount(){
         this.returnFunctie();
-        console.log('ja');
     }
 
 
@@ -337,7 +336,7 @@ class PersonalDataComponent extends Component {
 
 
     render() {
-
+        console.log(this.state);
         if (this.state.isLoading === true) {
             return (<div>
                 Loading....

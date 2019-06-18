@@ -239,9 +239,7 @@ class PersonalDataComponent extends Component {
         })
     }
 
-
-
-
+    
     handleVaardighedenChange = idx => evt => {
         let oldSollicitatie = this.state.sollicitatie;
         const newSollicitatie = this.state.sollicitatie.vaardigheden.map((skill, sidx) => {
@@ -273,7 +271,6 @@ class PersonalDataComponent extends Component {
     };
 
 
-
     handleErvaringChange = idx => (evt,value) => {
         let oldSollicitatie = this.state.sollicitatie;
         const newSollicitatie = this.state.sollicitatie.vaardigheden.map((skill, sidx) => {
@@ -285,7 +282,6 @@ class PersonalDataComponent extends Component {
         });
 
         oldSollicitatie.vaardigheden = newSollicitatie;
-
         this.setState({ sollicitatie: oldSollicitatie });
     };
 
@@ -307,23 +303,41 @@ class PersonalDataComponent extends Component {
     };
 
     getAvatar(){
-        if(typeof this.state.avatar !== 'undefined' ){
-            return this.state.avatar
+        if(this.state.sollicitatie.avatar === undefined ){
+            return(
+                <AvatarComponent
+                    background={0}
+                    head={0}
+                    skin={0}
+                    face={0}
+                    hair={0}
+                    hairColor={0}
+                    facial={0}
+                    facialColor={0}
+                    eyebrows={0}
+                    eyebrowsColor={0}
+                    glasses={0}
+                    options={true}
+                />
+            );
         } else {
-            let defaultAvatar =  {
-                    background: 0,
-                    head: 0,
-                    skin: 0,
-                    face: 0,
-                    hair: 0,
-                    hairColor: 0,
-                    facial: 0,
-                    facialColor: 0,
-                    eyebrows: 0,
-                    eyebrowsColor: 0,
-                    glasses: 0,
-            };
-            return defaultAvatar
+            let avatar = this.state.sollicitatie.avatar;
+            return(
+                <AvatarComponent
+                    background={avatar.background}
+                    head={avatar.head}
+                    skin={avatar.skin}
+                    face={avatar.face}
+                    hair={avatar.hair}
+                    hairColor={avatar.hairColor}
+                    facial={avatar.facial}
+                    facialColor={avatar.facialColor}
+                    eyebrows={avatar.eyebrows}
+                    eyebrowsColor={avatar.eyebrowsColor}
+                    glasses={avatar.glasses}
+                    options={true}
+                />
+            )
         }
     }
 
@@ -386,11 +400,7 @@ class PersonalDataComponent extends Component {
 
 
 
-                            <AvatarComponent
-                                avatar={this.getAvatar()}
-                                onChange={this.handleBuilderChanges}
-                                options={true}
-                            />
+                            {this.getAvatar()}
 
                             <div className="row">
                                 <div className="col-md-6">

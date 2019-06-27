@@ -88,10 +88,6 @@ class PersonalDataComponent extends Component {
         this.returnFunctieDropdown = this.returnFunctieDropdown.bind(this);
     }
 
-    // 5cd2e2fb465b4abc67b4c77a
-    // 5cd2e515160a47be28b5aaa9
-
-
     componentWillMount(){
         console.log('test');
         let sollicitatieID  = this.props.sollicitatie;
@@ -239,7 +235,7 @@ class PersonalDataComponent extends Component {
         })
     }
 
-    
+
     handleVaardighedenChange = idx => evt => {
         let oldSollicitatie = this.state.sollicitatie;
         const newSollicitatie = this.state.sollicitatie.vaardigheden.map((skill, sidx) => {
@@ -318,6 +314,7 @@ class PersonalDataComponent extends Component {
                     eyebrowsColor={0}
                     glasses={0}
                     options={true}
+                    onChange={this.handleBuilderChanges}
                 />
             );
         } else {
@@ -336,6 +333,7 @@ class PersonalDataComponent extends Component {
                     eyebrowsColor={avatar.eyebrowsColor}
                     glasses={avatar.glasses}
                     options={true}
+                    onChange={this.handleBuilderChanges}
                 />
             )
         }
@@ -428,15 +426,15 @@ class PersonalDataComponent extends Component {
 
                         </div>
                     </div>
-                    {console.log(this.state)}
                     <div className="flex justify-center">
-                            <Link
+                            <Link  style={{ textDecoration: 'none' }}
                                 to={{
                                     pathname: "/confirm/" + this.props.sollicitatie,
                                     state: {
                                         sollicitatie: this.state.sollicitatie,
                                         avatar: this.state.avatar,
-                                        functie: this.returnFunctie()
+                                        functie: this.returnFunctie(),
+
                                     }
                                 }}
                             >

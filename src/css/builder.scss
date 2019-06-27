@@ -153,16 +153,14 @@
 
 .speech{
   font-family: "Avenir Next";
-  font-size: 18px;
+  font-size: 15px;
   left: -4%;
   z-index: 5;
   position: absolute;
   padding-top: 36px;
-  padding-left: 30px;
+  padding-left: 40px;
   line-height: 1.6;
-
 }
-
 
 .speech-subtext{
   font-size: 12px;
@@ -177,12 +175,14 @@
 }
 @media only screen and (max-width: 976px) {
   .speech {
-    font-size: 15px;
+    font-size: 12px;
   }
   .speech-subtext{
-    font-size: 11px;
+    font-size: 10px;
   }
 }
+
+
 
 
 

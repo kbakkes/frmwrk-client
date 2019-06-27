@@ -2,7 +2,8 @@ import React, { Component }  from 'react';
 import axios from 'axios';
 import AvatarComponent from "./AvatarComponent";
 import Button from '@material-ui/core/Button';
-import composeMessage from './../assets/messageComposer';
+import { Route, Redirect } from 'react-router'
+
 
 const styles = {
     send: {
@@ -43,10 +44,7 @@ class ConfirmComponent extends Component {
         });
     }
 
-//    changeAvatar = (dir,name) => evt => {
-
     sendSollicitatie = (sollicitatie, avatar) => evt => {
-
         console.log(avatar);
 
         axios.put('http://localhost:8000/api/sollicitaties/' +  sollicitatie._id, {
@@ -94,6 +92,27 @@ class ConfirmComponent extends Component {
 
 
 
+
+    async sendConfirmMail(sollicitatie){
+        axios.post('http://localhost:8000/api/sollicitaties/' +  sollicitatie._id, {
+                email: 'karim.bakkes@gmail.com',
+                message: 'test',
+                voornaam: sollicitatie.voornaam,
+                achternaam: sollicitatie.achternaam,
+                emailadres: sollicitatie.emailadres,
+                functie: this.props.location.state.functie
+            })
+
+            .then(function (response) {
+                console.log('CALL SUCCESSFULL...',response);
+            })
+            .catch(function (error) {
+                console.log(error);
+            });
+
+    }
+
+
     notifySlack(sollicitatie, avatar){
         console.log(sollicitatie);
         let vaardigheden = this.returnVaardigheden(sollicitatie);
@@ -105,12 +124,11 @@ class ConfirmComponent extends Component {
                    "\n" + sollicitatie.voornaam + " beschikt over de volgende vaardigheden: " + vaardigheden + ".\n" +
                     "contact kan worden opgenomen via: " + sollicitatie.emailadres + "\n \n" +
                     "De volledige sollicatie kan worden teruggekeken op: " + "http://localhost:3000/sollicitatie/" + sollicitatie._id +
-                    "\n " + avatar.background
+                    "\n "
             };
 
 
         axios.post('https://hooks.slack.com/services/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', data, {
-
             headers: {
                 'Content-Type': 'application/x-www-form-urlencoded'
             }
@@ -123,13 +141,19 @@ class ConfirmComponent extends Component {
                 });
     }
 
-
-
-
     render() {
         let avatar;
-        let sollicitatie = this.props.location.state.sollicitatie;
-        let functie = this.props.location.state;
+        let sollicitatie;
+        let functie;
+        if(this.props.location.state === undefined){
+            console.log('het is undefined');
+
+            return(<Redirect to={"/edit/" + this.props.match.params.sollicitatie} />
+            )
+
+        }
+        console.log(this.props.location.state);
+
 
         if(this.props.location.state.avatar === undefined) {
              avatar = {
@@ -147,9 +171,16 @@ class ConfirmComponent extends Component {
                     glasses: 0,
                 }
             }
-        } else {
-             avatar = this.props.location.state.avatar;
         }
+             avatar = this.props.location.state.avatar;
+             sollicitatie = this.props.location.state.sollicitatie;
+             functie = this.props.location.state;
+
+
+            console.log(sollicitatie.voornaam);
+            console.log(avatar);
+
+
 
         if(this.state.isConfirmed){
             return(
@@ -171,6 +202,7 @@ class ConfirmComponent extends Component {
                             glasses={1}
                             options={false}
                         />
+
                     </div>
                      <div className="col-md-6  ">
                          <img className="speech-bubble" src={require("./../assets/speech.svg")} alt="speech" />
@@ -182,11 +214,17 @@ class ConfirmComponent extends Component {
                          </div>
                      </div>
                  </div>
+                <div className="row mt-10 justify-content-center text-center">
+                    <h2>
+                        Er is een bevestingsmail gestuurd naar: <br />
+                        <span className="text-frmwrk-red">{sollicitatie.emailadres}</span>
+                    </h2>
+                    {console.log(this.sendConfirmMail(sollicitatie).catch(console.error))}
+                </div>
                 </div>
 
             );
             } else {
-            console.log(avatar, avatar.background);
             return (
                 <div className="bg-frmwrk-blue  w-screen h-screen">
                     <div className="row w-screen  pt-3 ">

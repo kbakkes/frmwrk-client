@@ -2,7 +2,7 @@ import React, { Component }  from 'react';
 import axios from 'axios';
 import AvatarComponent from "./AvatarComponent";
 import Button from '@material-ui/core/Button';
-import { Route, Redirect } from 'react-router'
+import { Redirect } from 'react-router';
 
 
 const styles = {

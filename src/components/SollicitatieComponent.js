@@ -88,21 +88,11 @@ class SollicitatieComponent extends Component {
 
 
 
-    returnVaardigheden = (sollicitatie) => {
-        return sollicitatie.vaardigheden.map((vaardigheid) => {
-            return vaardigheid.vaardigheid;
-        })
-    };
-
-
-
-
 
 
 
 
     render() {
-
 
         if(this.state.isLoading){
             return(

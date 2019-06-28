@@ -7,6 +7,7 @@ import HeaderComponent from './components/headerComponent';
 import BuilderComponent from './components/BuilderComponent';
 import ConfirmComponent from "./components/ConfirmComponent";
 import SollicitatieComponent from './components/SollicitatieComponent';
+import OverviewComponent from './components/OverviewComponent';
 
 const Index = () => <h2>Welcome to the FRMWRK Builder</h2>;
 
@@ -22,8 +23,11 @@ function App() {
           <Route name="builder" path="/edit/:sollicitatie/" component={BuilderComponent} />
           <Route name="builder" path="/confirm/:sollicitatie/" component={ConfirmComponent} />
           <Route name="builder" path="/sollicitatie/:sollicitatie/" component={SollicitatieComponent}/>
+          <Route name="builder" path="/sollicitaties/all" component={OverviewComponent} />
       </Router>
   );
 }
 
 export default App;
+
+

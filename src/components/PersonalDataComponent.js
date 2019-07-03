@@ -342,7 +342,6 @@ class PersonalDataComponent extends Component {
 
     handleBuilderChanges(avatar){
         this.setState({ avatar: avatar});
-        console.log(this.state)
     };
 
 
@@ -354,8 +353,6 @@ class PersonalDataComponent extends Component {
                 Loading....
             </div>)
         } else {
-
-
             let user = this.state.sollicitatie;
             return (
                 <div className="container">
@@ -395,7 +392,6 @@ class PersonalDataComponent extends Component {
                             </div>
                         </div>
                         <div className="col-md-7" style={{paddingLeft: '35px'}}>
-
 
 
                             {this.getAvatar()}

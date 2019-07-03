@@ -81,7 +81,6 @@ class OverviewComponent extends Component {
         this.returnFunctie();
     }
 
-
     handleClose = () => {
         this.setState({ open: false });
     };
